@@ -1,16 +1,18 @@
 package config
 
 import (
-	"github.com/Unknwon/goconfig"
+	cfg"github.com/Unknwon/goconfig"
 	"DailySever/commons/util"
+	"fmt"
 )
 
-var Cfg goconfig.ConfigFile
+var Cfg *cfg.ConfigFile
 
-const CONFIG  string ="\\config.ini"
+const CONFIG string = "\\config.ini"
 
-func InitConfig() (err error){
+func InitConfig() (err error) {
 	rootDir := util.GetCurrentDirectory()
-	Cfg, err :=goconfig.LoadConfigFile(rootDir+CONFIG)
+	fmt.Println("fff:",rootDir)
+	Cfg, err = cfg.LoadConfigFile(rootDir + CONFIG)
 	return err
 }

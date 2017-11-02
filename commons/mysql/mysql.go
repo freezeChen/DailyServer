@@ -24,6 +24,7 @@ func Refresh() {
 	once.Do(func() {
 		db_name := Cfg.MustValue("mysql", "db_name", "")
 		connstring := Cfg.MustValue("mysql", "connstring", "")
+		fmt.Println(db_name,connstring)
 		engine, err = xorm.NewEngine("mysql", connstring+"/"+db_name+"?charset=utf8")
 		if err != nil {
 			LogFile.I("mysql", fmt.Sprintf("Failed to newengine: %s", err))
