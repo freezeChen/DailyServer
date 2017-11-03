@@ -2,15 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="31812dc6-fac7-4ced-99ea-c096fd36c3bd" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/api/modules/init.go" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/api/modules/login.go" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/commons/config/config.go" afterPath="$PROJECT_DIR$/commons/config/config.go" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/commons/log/log.go" afterPath="$PROJECT_DIR$/commons/log/log.go" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/commons/mysql/mysql.go" afterPath="$PROJECT_DIR$/commons/mysql/mysql.go" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config.ini" afterPath="$PROJECT_DIR$/config.ini" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/log/log.txt" afterPath="$PROJECT_DIR$/resources/log/log.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/service.go" afterPath="$PROJECT_DIR$/service.go" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/api/modules/base.go" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/api/modules/login.go" afterPath="$PROJECT_DIR$/api/modules/login.go" />
+      <change beforePath="$PROJECT_DIR$/commons/log/log.go" afterPath="$PROJECT_DIR$/commons/log/log.go" />
+      <change beforePath="$PROJECT_DIR$/config.ini" afterPath="$PROJECT_DIR$/config.ini" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -22,27 +19,24 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="service.go" pinned="false" current-in-tab="true">
+      <file leaf-file-name="service.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/service.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="168">
-              <caret line="8" column="30" lean-forward="true" selection-start-line="8" selection-start-column="30" selection-end-line="8" selection-end-column="30" />
+            <state relative-caret-position="-221">
+              <caret line="24" column="26" lean-forward="false" selection-start-line="24" selection-start-column="26" selection-end-line="24" selection-end-column="26" />
               <folding>
+                <element signature="e#14#230#0" expanded="true" />
                 <element signature="e#255#412#0" expanded="false" />
-                <element signature="e#451#556#0" expanded="false" />
-                <element signature="e#1700#2363#0" expanded="false" />
-                <element signature="e#2302#2335#0" expanded="false" />
-                <element signature="e#2341#2360#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="login.go" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/api/modules/login.go">
+      <file leaf-file-name="base.go" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/api/modules/base.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="63">
-              <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+            <state relative-caret-position="221">
+              <caret line="13" column="0" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
               <folding>
                 <element signature="e#17#50#0" expanded="true" />
               </folding>
@@ -50,103 +44,23 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="log.go" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/commons/log/log.go">
+      <file leaf-file-name="config.ini" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/config.ini">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="231">
-              <caret line="17" column="30" lean-forward="false" selection-start-line="17" selection-start-column="30" selection-end-line="17" selection-end-column="30" />
+            <state relative-caret-position="272">
+              <caret line="16" column="0" lean-forward="true" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="file.go" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/commons/util/file.go">
+      <file leaf-file-name="login.go" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/api/modules/login.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="231">
-              <caret line="33" column="35" lean-forward="false" selection-start-line="33" selection-start-column="35" selection-end-line="33" selection-end-column="35" />
+            <state relative-caret-position="34">
+              <caret line="2" column="7" lean-forward="false" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="33" />
               <folding>
-                <element signature="n#!!block;n#Mkdir#0" expanded="false" />
-                <element signature="e#147#187#0" expanded="false" />
-                <element signature="e#239#272#0" expanded="false" />
-                <element signature="n#!!block;n#IsDirExists#0" expanded="false" />
-                <element signature="e#417#446#0" expanded="false" />
-                <element signature="e#452#476#0" expanded="false" />
-                <element signature="n#!!block;n#IsImage#0" expanded="false" />
-                <element signature="e#578#684#0" expanded="false" />
-                <element signature="e#597#656#0" expanded="false" />
-                <element signature="e#658#681#0" expanded="false" />
-                <element signature="n#!!block;n#IsAudio#0" expanded="false" />
-                <element signature="e#772#885#0" expanded="false" />
-                <element signature="e#791#857#0" expanded="false" />
-                <element signature="e#859#882#0" expanded="false" />
-                <element signature="n#!!block;n#IsVideo#0" expanded="false" />
-                <element signature="e#973#1086#0" expanded="false" />
-                <element signature="e#992#1058#0" expanded="false" />
-                <element signature="e#1060#1083#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="util.go" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/commons/util/util.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1239">
-              <caret line="179" column="40" lean-forward="false" selection-start-line="179" selection-start-column="40" selection-end-line="179" selection-end-column="40" />
-              <folding>
-                <element signature="n#!!block;n#ToString#0" expanded="false" />
-                <element signature="e#284#337#0" expanded="false" />
-                <element signature="e#302#322#0" expanded="false" />
-                <element signature="e#374#389#0" expanded="false" />
-                <element signature="e#433#505#0" expanded="false" />
-                <element signature="e#451#490#0" expanded="false" />
-                <element signature="n#!!block;n#ToInt#0" expanded="false" />
-                <element signature="e#673#688#0" expanded="false" />
-                <element signature="e#740#755#0" expanded="false" />
-                <element signature="e#761#776#0" expanded="false" />
-                <element signature="n#!!block;n#ToInt64#0" expanded="false" />
-                <element signature="e#919#934#0" expanded="false" />
-                <element signature="e#998#1013#0" expanded="false" />
-                <element signature="e#1019#1034#0" expanded="false" />
-                <element signature="n#!!block;n#ToUint64#0" expanded="false" />
-                <element signature="e#1181#1196#0" expanded="false" />
-                <element signature="e#1261#1276#0" expanded="false" />
-                <element signature="e#1282#1297#0" expanded="false" />
-                <element signature="n#!!block;n#ToFloat64#0" expanded="false" />
-                <element signature="e#1448#1463#0" expanded="false" />
-                <element signature="e#1525#1540#0" expanded="false" />
-                <element signature="e#1546#1561#0" expanded="false" />
-                <element signature="n#!!block;n#ToBool#0" expanded="false" />
-                <element signature="e#1677#1696#0" expanded="false" />
-                <element signature="n#!!block;n#GetRemoteIp#0" expanded="false" />
-                <element signature="e#1879#1903#0" expanded="false" />
-                <element signature="e#1973#1996#0" expanded="false" />
-                <element signature="n#!!block;n#RandInt64#0" expanded="false" />
-                <element signature="e#2144#2161#0" expanded="false" />
-                <element signature="n#!!block;n#Random#0" expanded="false" />
-                <element signature="e#2520#2565#0" expanded="false" />
-                <element signature="e#2526#2534#0" expanded="false" />
-                <element signature="e#2541#2549#0" expanded="false" />
-                <element signature="e#2556#2564#0" expanded="false" />
-                <element signature="e#2679#2820#0" expanded="false" />
-                <element signature="e#2693#2722#0" expanded="false" />
-                <element signature="n#!!block;n#QuickValidate#0" expanded="false" />
-                <element signature="e#3000#3019#0" expanded="false" />
-                <element signature="n#!!block;n#IsEmpty#0" expanded="false" />
-                <element signature="e#3219#3237#0" expanded="false" />
-                <element signature="n#!!block;n#IsNumber#0" expanded="false" />
-                <element signature="n#!!block;n#IsMobile#0" expanded="false" />
-                <element signature="n#!!block;n#IsEmail#0" expanded="false" />
-                <element signature="n#!!block;n#IsCurrency#0" expanded="false" />
-                <element signature="n#!!block;n#If#0" expanded="false" />
-                <element signature="e#3998#4019#0" expanded="false" />
-                <element signature="n#!!block;n#GetMd5String#0" expanded="false" />
-                <element signature="n#!!block;n#PadLeft#0" expanded="false" />
-                <element signature="e#4366#4385#0" expanded="false" />
-                <element signature="e#4459#4503#0" expanded="false" />
-                <element signature="n#!!block;n#GetCurrentDirectory#0" expanded="false" />
-                <element signature="e#4699#4715#0" expanded="false" />
+                <element signature="e#17#50#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -155,7 +69,7 @@
       <file leaf-file-name="config.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/commons/config/config.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
+            <state relative-caret-position="272">
               <caret line="16" column="14" lean-forward="false" selection-start-line="16" selection-start-column="14" selection-end-line="16" selection-end-column="14" />
               <folding>
                 <element signature="e#16#94#0" expanded="true" />
@@ -196,13 +110,14 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/commons/util/util.go" />
-        <option value="$PROJECT_DIR$/config.ini" />
         <option value="$PROJECT_DIR$/api/modules/init.go" />
-        <option value="$PROJECT_DIR$/api/modules/login.go" />
         <option value="$PROJECT_DIR$/commons/config/config.go" />
         <option value="$PROJECT_DIR$/commons/mysql/mysql.go" />
-        <option value="$PROJECT_DIR$/commons/log/log.go" />
         <option value="$PROJECT_DIR$/service.go" />
+        <option value="$PROJECT_DIR$/api/modules/login.go" />
+        <option value="$PROJECT_DIR$/commons/log/log.go" />
+        <option value="$PROJECT_DIR$/api/modules/base.go" />
+        <option value="$PROJECT_DIR$/config.ini" />
       </list>
     </option>
   </component>
@@ -212,9 +127,9 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-1374" />
-    <option name="y" value="-8" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-1323" />
+    <option name="y" value="105" />
     <option name="width" value="1382" />
     <option name="height" value="784" />
   </component>
@@ -234,6 +149,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -260,31 +177,7 @@
             <path>
               <item name="DailySever" type="b2602c69:ProjectViewProjectNode" />
               <item name="DailySever" type="462c0819:PsiDirectoryNode" />
-              <item name="commons" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DailySever" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DailySever" type="462c0819:PsiDirectoryNode" />
-              <item name="commons" type="462c0819:PsiDirectoryNode" />
-              <item name="log" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DailySever" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DailySever" type="462c0819:PsiDirectoryNode" />
-              <item name="commons" type="462c0819:PsiDirectoryNode" />
-              <item name="mysql" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DailySever" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DailySever" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DailySever" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DailySever" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="log" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="DailySever" type="b2602c69:ProjectViewProjectNode" />
@@ -294,10 +187,8 @@
           <select />
         </subPane>
       </pane>
-      <pane id="AndroidView" />
-      <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="PackagesPane" />
+      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -306,6 +197,11 @@
     <property name="DefaultGoTemplateProperty" value="Go File" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="settings.editor.splitter.proportion" value="0.23201856" />
+    <property name="GO_FMT" value="false" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -326,7 +222,16 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Go Application.service.go">
+  <component name="RunManager">
+    <configuration name="service.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true">
+      <module name="DailySever" />
+      <working_directory value="$PROJECT_DIR$" />
+      <go_parameters value="-i" />
+      <kind value="FILE" />
+      <filePath value="$PROJECT_DIR$/service.go" />
+      <package value="DailySever" />
+      <directory value="$PROJECT_DIR$" />
+    </configuration>
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="WIDTH" value="400" />
       <option name="HEIGHT" value="300" />
@@ -367,12 +272,6 @@
       <envs />
       <patterns />
     </configuration>
-    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
-      <module name="" />
-      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
-      <option name="PROGRAM_PARAMETERS" />
-      <predefined_log_file id="idea.log" enabled="true" />
-    </configuration>
     <configuration default="true" type="Remote" factoryName="Remote">
       <option name="USE_SOCKET_TRANSPORT" value="true" />
       <option name="SERVER_MODE" value="false" />
@@ -407,14 +306,11 @@
       <properties />
       <listeners />
     </configuration>
-    <configuration name="service.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true">
-      <module name="DailySever" />
-      <working_directory value="$PROJECT_DIR$" />
-      <go_parameters value="-i" />
-      <kind value="FILE" />
-      <filePath value="$PROJECT_DIR$/service.go" />
-      <package value="DailySever" />
-      <directory value="$PROJECT_DIR$" />
+    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
+      <module name="" />
+      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
+      <option name="PROGRAM_PARAMETERS" />
+      <predefined_log_file id="idea.log" enabled="true" />
     </configuration>
     <recent_temporary>
       <list size="1">
@@ -438,12 +334,20 @@
       <workItem from="1508487449353" duration="5540000" />
       <workItem from="1508721451875" duration="355000" />
       <workItem from="1508736948836" duration="6536000" />
-      <workItem from="1509611405915" duration="28000" />
+      <workItem from="1509611405915" duration="1866000" />
     </task>
+    <task id="LOCAL-00001" summary="12">
+      <created>1509611451944</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1509611451944</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="12459000" />
+    <option name="totallyTimeSpent" value="14297000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -455,36 +359,36 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1374" y="-8" width="1382" height="784" extended-state="6" />
+    <frame x="-1323" y="105" width="1382" height="784" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18740515" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32741934" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5629032" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2612903" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5322581" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.37419355" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5629032" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22580644" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14732824" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32850242" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -521,6 +425,10 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="12" />
+    <option name="LAST_COMMIT_MESSAGE" value="12" />
+  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <option name="time" value="1" />
@@ -530,14 +438,58 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/service.go">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="24" column="26" lean-forward="false" selection-start-line="24" selection-start-column="26" selection-end-line="24" selection-end-column="26" />
+          <folding>
+            <element signature="e#14#230#0" expanded="true" />
+            <element signature="e#255#412#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Go/src/github.com/Unknwon/goconfig/conf.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2652">
+          <caret line="163" column="0" lean-forward="false" selection-start-line="163" selection-start-column="0" selection-end-line="163" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/modules/login.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+          <folding>
+            <element signature="e#17#50#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/commons/config/config.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="16" column="14" lean-forward="false" selection-start-line="16" selection-start-column="14" selection-end-line="16" selection-end-column="14" />
+          <folding>
+            <element signature="e#16#94#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/commons/log/log.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="22" column="25" lean-forward="true" selection-start-line="22" selection-start-column="25" selection-end-line="22" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/service.go">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
+            <element signature="e#14#230#0" expanded="true" />
             <element signature="e#255#412#0" expanded="false" />
-            <element signature="e#451#556#0" expanded="false" />
-            <element signature="e#1700#2363#0" expanded="false" />
-            <element signature="e#2302#2335#0" expanded="false" />
-            <element signature="e#2341#2360#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -564,26 +516,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="231">
           <caret line="33" column="35" lean-forward="false" selection-start-line="33" selection-start-column="35" selection-end-line="33" selection-end-column="35" />
-          <folding>
-            <element signature="n#!!block;n#Mkdir#0" expanded="false" />
-            <element signature="e#147#187#0" expanded="false" />
-            <element signature="e#239#272#0" expanded="false" />
-            <element signature="n#!!block;n#IsDirExists#0" expanded="false" />
-            <element signature="e#417#446#0" expanded="false" />
-            <element signature="e#452#476#0" expanded="false" />
-            <element signature="n#!!block;n#IsImage#0" expanded="false" />
-            <element signature="e#578#684#0" expanded="false" />
-            <element signature="e#597#656#0" expanded="false" />
-            <element signature="e#658#681#0" expanded="false" />
-            <element signature="n#!!block;n#IsAudio#0" expanded="false" />
-            <element signature="e#772#885#0" expanded="false" />
-            <element signature="e#791#857#0" expanded="false" />
-            <element signature="e#859#882#0" expanded="false" />
-            <element signature="n#!!block;n#IsVideo#0" expanded="false" />
-            <element signature="e#973#1086#0" expanded="false" />
-            <element signature="e#992#1058#0" expanded="false" />
-            <element signature="e#1060#1083#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -591,60 +523,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1239">
           <caret line="179" column="40" lean-forward="true" selection-start-line="179" selection-start-column="40" selection-end-line="179" selection-end-column="40" />
-          <folding>
-            <element signature="n#!!block;n#ToString#0" expanded="false" />
-            <element signature="e#284#337#0" expanded="false" />
-            <element signature="e#302#322#0" expanded="false" />
-            <element signature="e#374#389#0" expanded="false" />
-            <element signature="e#433#505#0" expanded="false" />
-            <element signature="e#451#490#0" expanded="false" />
-            <element signature="n#!!block;n#ToInt#0" expanded="false" />
-            <element signature="e#673#688#0" expanded="false" />
-            <element signature="e#740#755#0" expanded="false" />
-            <element signature="e#761#776#0" expanded="false" />
-            <element signature="n#!!block;n#ToInt64#0" expanded="false" />
-            <element signature="e#919#934#0" expanded="false" />
-            <element signature="e#998#1013#0" expanded="false" />
-            <element signature="e#1019#1034#0" expanded="false" />
-            <element signature="n#!!block;n#ToUint64#0" expanded="false" />
-            <element signature="e#1181#1196#0" expanded="false" />
-            <element signature="e#1261#1276#0" expanded="false" />
-            <element signature="e#1282#1297#0" expanded="false" />
-            <element signature="n#!!block;n#ToFloat64#0" expanded="false" />
-            <element signature="e#1448#1463#0" expanded="false" />
-            <element signature="e#1525#1540#0" expanded="false" />
-            <element signature="e#1546#1561#0" expanded="false" />
-            <element signature="n#!!block;n#ToBool#0" expanded="false" />
-            <element signature="e#1677#1696#0" expanded="false" />
-            <element signature="n#!!block;n#GetRemoteIp#0" expanded="false" />
-            <element signature="e#1879#1903#0" expanded="false" />
-            <element signature="e#1973#1996#0" expanded="false" />
-            <element signature="n#!!block;n#RandInt64#0" expanded="false" />
-            <element signature="e#2144#2161#0" expanded="false" />
-            <element signature="n#!!block;n#Random#0" expanded="false" />
-            <element signature="e#2520#2565#0" expanded="false" />
-            <element signature="e#2526#2534#0" expanded="false" />
-            <element signature="e#2541#2549#0" expanded="false" />
-            <element signature="e#2556#2564#0" expanded="false" />
-            <element signature="e#2679#2820#0" expanded="false" />
-            <element signature="e#2693#2722#0" expanded="false" />
-            <element signature="n#!!block;n#QuickValidate#0" expanded="false" />
-            <element signature="e#3000#3019#0" expanded="false" />
-            <element signature="n#!!block;n#IsEmpty#0" expanded="false" />
-            <element signature="e#3219#3237#0" expanded="false" />
-            <element signature="n#!!block;n#IsNumber#0" expanded="false" />
-            <element signature="n#!!block;n#IsMobile#0" expanded="false" />
-            <element signature="n#!!block;n#IsEmail#0" expanded="false" />
-            <element signature="n#!!block;n#IsCurrency#0" expanded="false" />
-            <element signature="n#!!block;n#If#0" expanded="false" />
-            <element signature="e#3998#4019#0" expanded="false" />
-            <element signature="n#!!block;n#GetMd5String#0" expanded="false" />
-            <element signature="n#!!block;n#PadLeft#0" expanded="false" />
-            <element signature="e#4366#4385#0" expanded="false" />
-            <element signature="e#4459#4503#0" expanded="false" />
-            <element signature="n#!!block;n#GetCurrentDirectory#0" expanded="false" />
-            <element signature="e#4699#4715#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -686,13 +564,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://C:/Go/src/github.com/gin-gonic/gin/utils.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="196">
-          <caret line="47" column="5" lean-forward="false" selection-start-line="47" selection-start-column="5" selection-end-line="47" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://C:/Go/src/gin-gonic/gin/context.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="145">
@@ -700,16 +571,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://C:/Go/src/github.com/gin-gonic/gin/CHANGELOG.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="-210">
-            <caret line="89" column="0" lean-forward="true" selection-start-line="89" selection-start-column="0" selection-end-line="89" selection-end-column="0" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://C:/Go/src/github.com/gin-gonic/gin/CHANGELOG.md" />
     <entry file="file://C:/Go/src/github.com/kardianos/service/service.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
@@ -718,36 +580,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://C:/Go/src/github.com/Unknwon/goconfig/conf.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="109">
-          <caret line="163" column="0" lean-forward="false" selection-start-line="163" selection-start-column="0" selection-end-line="163" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Roaming/Tencent/QQ/Temp/UKE$_GA`2K7992ASEN21SMP.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
+    <entry file="file://$USER_HOME$/AppData/Roaming/Tencent/QQ/Temp/UKE$_GA`2K7992ASEN21SMP.png" />
     <entry file="file://C:/Go/src/github.com/Unknwon/goconfig/read.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="273">
           <caret line="227" column="0" lean-forward="true" selection-start-line="227" selection-start-column="0" selection-end-line="227" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config.ini">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="12" column="0" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/modules/init.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="34" column="9" lean-forward="true" selection-start-line="34" selection-start-column="9" selection-end-line="34" selection-end-column="9" />
         </state>
       </provider>
     </entry>
@@ -772,45 +609,75 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/api/modules/init.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="196">
+          <caret line="16" column="5" lean-forward="false" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Go/src/github.com/gin-gonic/gin/utils.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="196">
+          <caret line="47" column="5" lean-forward="false" selection-start-line="47" selection-start-column="5" selection-end-line="47" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/commons/util/file.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="231">
           <caret line="33" column="35" lean-forward="false" selection-start-line="33" selection-start-column="35" selection-end-line="33" selection-end-column="35" />
-          <folding>
-            <element signature="n#!!block;n#Mkdir#0" expanded="false" />
-            <element signature="e#147#187#0" expanded="false" />
-            <element signature="e#239#272#0" expanded="false" />
-            <element signature="n#!!block;n#IsDirExists#0" expanded="false" />
-            <element signature="e#417#446#0" expanded="false" />
-            <element signature="e#452#476#0" expanded="false" />
-            <element signature="n#!!block;n#IsImage#0" expanded="false" />
-            <element signature="e#578#684#0" expanded="false" />
-            <element signature="e#597#656#0" expanded="false" />
-            <element signature="e#658#681#0" expanded="false" />
-            <element signature="n#!!block;n#IsAudio#0" expanded="false" />
-            <element signature="e#772#885#0" expanded="false" />
-            <element signature="e#791#857#0" expanded="false" />
-            <element signature="e#859#882#0" expanded="false" />
-            <element signature="n#!!block;n#IsVideo#0" expanded="false" />
-            <element signature="e#973#1086#0" expanded="false" />
-            <element signature="e#992#1058#0" expanded="false" />
-            <element signature="e#1060#1083#0" expanded="false" />
-          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/commons/util/util.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="194" column="48" lean-forward="true" selection-start-line="194" selection-start-column="48" selection-end-line="194" selection-end-column="48" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/commons/log/log.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="17" column="30" lean-forward="false" selection-start-line="17" selection-start-column="30" selection-end-line="17" selection-end-column="30" />
+        <state relative-caret-position="34">
+          <caret line="8" column="1" lean-forward="true" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Go/src/github.com/Unknwon/goconfig/conf.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="163" column="0" lean-forward="false" selection-start-line="163" selection-start-column="0" selection-end-line="163" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/modules/base.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="0" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+          <folding>
+            <element signature="e#17#50#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/service.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-221">
+          <caret line="24" column="26" lean-forward="false" selection-start-line="24" selection-start-column="26" selection-end-line="24" selection-end-column="26" />
+          <folding>
+            <element signature="e#14#230#0" expanded="true" />
+            <element signature="e#255#412#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/api/modules/login.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="63">
-          <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+        <state relative-caret-position="34">
+          <caret line="2" column="7" lean-forward="false" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="33" />
           <folding>
             <element signature="e#17#50#0" expanded="true" />
           </folding>
@@ -819,7 +686,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/commons/config/config.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
+        <state relative-caret-position="272">
           <caret line="16" column="14" lean-forward="false" selection-start-line="16" selection-start-column="14" selection-end-line="16" selection-end-column="14" />
           <folding>
             <element signature="e#16#94#0" expanded="true" />
@@ -827,87 +694,91 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/commons/util/util.go">
+    <entry file="file://$PROJECT_DIR$/config.ini">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1239">
-          <caret line="179" column="40" lean-forward="false" selection-start-line="179" selection-start-column="40" selection-end-line="179" selection-end-column="40" />
-          <folding>
-            <element signature="n#!!block;n#ToString#0" expanded="false" />
-            <element signature="e#284#337#0" expanded="false" />
-            <element signature="e#302#322#0" expanded="false" />
-            <element signature="e#374#389#0" expanded="false" />
-            <element signature="e#433#505#0" expanded="false" />
-            <element signature="e#451#490#0" expanded="false" />
-            <element signature="n#!!block;n#ToInt#0" expanded="false" />
-            <element signature="e#673#688#0" expanded="false" />
-            <element signature="e#740#755#0" expanded="false" />
-            <element signature="e#761#776#0" expanded="false" />
-            <element signature="n#!!block;n#ToInt64#0" expanded="false" />
-            <element signature="e#919#934#0" expanded="false" />
-            <element signature="e#998#1013#0" expanded="false" />
-            <element signature="e#1019#1034#0" expanded="false" />
-            <element signature="n#!!block;n#ToUint64#0" expanded="false" />
-            <element signature="e#1181#1196#0" expanded="false" />
-            <element signature="e#1261#1276#0" expanded="false" />
-            <element signature="e#1282#1297#0" expanded="false" />
-            <element signature="n#!!block;n#ToFloat64#0" expanded="false" />
-            <element signature="e#1448#1463#0" expanded="false" />
-            <element signature="e#1525#1540#0" expanded="false" />
-            <element signature="e#1546#1561#0" expanded="false" />
-            <element signature="n#!!block;n#ToBool#0" expanded="false" />
-            <element signature="e#1677#1696#0" expanded="false" />
-            <element signature="n#!!block;n#GetRemoteIp#0" expanded="false" />
-            <element signature="e#1879#1903#0" expanded="false" />
-            <element signature="e#1973#1996#0" expanded="false" />
-            <element signature="n#!!block;n#RandInt64#0" expanded="false" />
-            <element signature="e#2144#2161#0" expanded="false" />
-            <element signature="n#!!block;n#Random#0" expanded="false" />
-            <element signature="e#2520#2565#0" expanded="false" />
-            <element signature="e#2526#2534#0" expanded="false" />
-            <element signature="e#2541#2549#0" expanded="false" />
-            <element signature="e#2556#2564#0" expanded="false" />
-            <element signature="e#2679#2820#0" expanded="false" />
-            <element signature="e#2693#2722#0" expanded="false" />
-            <element signature="n#!!block;n#QuickValidate#0" expanded="false" />
-            <element signature="e#3000#3019#0" expanded="false" />
-            <element signature="n#!!block;n#IsEmpty#0" expanded="false" />
-            <element signature="e#3219#3237#0" expanded="false" />
-            <element signature="n#!!block;n#IsNumber#0" expanded="false" />
-            <element signature="n#!!block;n#IsMobile#0" expanded="false" />
-            <element signature="n#!!block;n#IsEmail#0" expanded="false" />
-            <element signature="n#!!block;n#IsCurrency#0" expanded="false" />
-            <element signature="n#!!block;n#If#0" expanded="false" />
-            <element signature="e#3998#4019#0" expanded="false" />
-            <element signature="n#!!block;n#GetMd5String#0" expanded="false" />
-            <element signature="n#!!block;n#PadLeft#0" expanded="false" />
-            <element signature="e#4366#4385#0" expanded="false" />
-            <element signature="e#4459#4503#0" expanded="false" />
-            <element signature="n#!!block;n#GetCurrentDirectory#0" expanded="false" />
-            <element signature="e#4699#4715#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/service.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="8" column="30" lean-forward="true" selection-start-line="8" selection-start-column="30" selection-end-line="8" selection-end-column="30" />
-          <folding>
-            <element signature="e#255#412#0" expanded="false" />
-            <element signature="e#451#556#0" expanded="false" />
-            <element signature="e#1700#2363#0" expanded="false" />
-            <element signature="e#2302#2335#0" expanded="false" />
-            <element signature="e#2341#2360#0" expanded="false" />
-          </folding>
+        <state relative-caret-position="272">
+          <caret line="16" column="0" lean-forward="true" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
   </component>
   <component name="masterDetails">
     <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>No facets are configured</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>DailySever</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+                <option value="0.6" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
       <state key="ProjectJDKs.UI">
         <settings>
           <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
           <splitter-proportions>
             <option name="proportions">
               <list>

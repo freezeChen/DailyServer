@@ -16,5 +16,4 @@ func (self Login) Login(ctx *gin.Context) {
 	self.data = gin.H{
 		"account": account,
 	}
-	return
 }

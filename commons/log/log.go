@@ -12,6 +12,7 @@ var LogFile *fileLogger.FileLogger
 
 func SetLog() {
 	rootDir := util.GetCurrentDirectory()
+	fmt.Println(rootDir)
 	name := Cfg.MustValue("log", "log_name", "")
 	//name:="log.txt"
 	path := Cfg.MustValue("log", "log_path", "")
