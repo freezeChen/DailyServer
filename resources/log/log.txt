@@ -1,1 +1,0 @@
-2017/10/23 15:03:12.202031 [mysql.go:40][1;35m[INFO] mysql [0m %!(EXTRA string=Failed to ping: dial  : unknown network  )
