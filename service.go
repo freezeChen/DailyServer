@@ -3,11 +3,11 @@ package main
 import (
 	"github.com/kardianos/service"
 	"os"
-	. "DailySever/commons/config"
-	. "DailySever/commons/log"
-	"DailySever/commons/mysql"
+	. "DailyServer/commons/config"
+	. "DailyServer/commons/log"
+	"DailyServer/commons/mysql"
 	"github.com/gin-gonic/gin"
-	"DailySever/api/modules"
+	"DailyServer/api/modules"
 	"log"
 	"net/http"
 	"time"
@@ -52,7 +52,7 @@ func (p *program) Start(s service.Service) error {
 func (p *program) run() {
 	InitConfig()
 	SetLog()
-	//defer LogFile.Close()
+
 	mysql.Refresh()
 	gin.SetMode(gin.ReleaseMode)
 	r := gin.Default()

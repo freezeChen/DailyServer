@@ -1,8 +1,8 @@
 package log
 
 import (
-	. "DailySever/commons/config"
-	"DailySever/commons/util"
+	. "DailyServer/commons/config"
+	"DailyServer/commons/util"
 
 	"github.com/aiwuTech/fileLogger"
 	"fmt"

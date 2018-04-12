@@ -2,9 +2,9 @@ package modules
 
 import (
 	"github.com/gin-gonic/gin"
-	"DailySever/commons/util"
-	"DailySever/commons/config"
-	. "DailySever/commons/log"
+	"DailyServer/commons/util"
+	"DailyServer/commons/config"
+	. "DailyServer/commons/log"
 	"fmt"
 )
 

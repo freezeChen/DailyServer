@@ -2,8 +2,8 @@ package mysql
 
 import (
 	"fmt"
-	. "DailySever/commons/config"
-	. "DailySever/commons/log"
+	. "DailyServer/commons/config"
+	. "DailyServer/commons/log"
 	"sync"
 	"time"
 
