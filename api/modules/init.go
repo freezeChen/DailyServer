@@ -9,17 +9,18 @@ import (
 )
 
 type ResultInfo struct {
-	code int64
-	msg  string
-	data interface{}
+	Code int64	`json:"code"`
+	Msg  string	`json:"msg"`
+	Data interface{} `json:"data"`
 }
 
 func JsonResult(method string, ctx *gin.Context, ref ResultInfo) {
-	errCode := util.ToString(ref.code)
+
+	errCode := util.ToString(ref.Code)
 	errMsg := config.Cfg.MustValue("error", "msg_"+errCode, "")
 	h := gin.H{"errcode": errCode, "errmsg": errMsg}
-	if ref.data != nil {
-		h["data"] = ref.data
+	if ref.Data != nil {
+		h["Data"] = ref.Data
 	}
 	var getParam string
 	req := ctx.Request
@@ -40,11 +41,12 @@ func JsonResult(method string, ctx *gin.Context, ref ResultInfo) {
 			LogFile.I("传入参数(post)", fmt.Sprintf("[%s] "+postParam[0:len(postParam)-1], method))
 		}
 	}
-	if len(ref.msg) > 0 {
-		LogFile.I("错误提示", fmt.Sprintf("[%s] "+ref.msg, method))
+	if len(ref.Msg) > 0 {
+		LogFile.I("错误提示", fmt.Sprintf("[%s] "+ref.Msg, method))
 	}
 	ctx.JSON(200, h)
-	if ref.code != 0 {
+
+	if ref.Code != 0 {
 		ctx.Abort()
 	}
 }

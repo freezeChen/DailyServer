@@ -40,6 +40,7 @@ func main() {
 		log.Printf("Service \"%ser\" %ser.\n", SERVICE_DISPLAYNAME, method)
 		return
 	}
+
 	if err := ser.Run(); err != nil {
 		log.Fatalf("Failed to run: %ser\n", err)
 	}
@@ -57,10 +58,11 @@ func (p *program) run() {
 	gin.SetMode(gin.ReleaseMode)
 	r := gin.Default()
 	r.Use(CORSMiddleware())
-	g0 := r.Group("/daily/login")
+	g0 := r.Group("/daily/account")
 	{
-		login := new(modules.Login)
-		g0.GET("login", login.Login)
+		account := new(modules.Account)
+		account.Code=-1
+		g0.GET("login", account.Login)
 	}
 
 	s := &http.Server{
