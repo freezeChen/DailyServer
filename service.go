@@ -11,6 +11,7 @@ import (
 	"log"
 	"net/http"
 	"time"
+	"DailyServer/commons/socketmanager"
 )
 
 type program struct{}
@@ -61,9 +62,11 @@ func (p *program) run() {
 	g0 := r.Group("/daily/account")
 	{
 		account := new(modules.Account)
-		account.Code=-1
+		account.Code = -1
 		g0.GET("login", account.Login)
 	}
+
+	r.GET("/daily/socket", socketmanager.HandelHttpToWebSocket)
 
 	s := &http.Server{
 		Addr:           ":8088",
