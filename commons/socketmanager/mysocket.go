@@ -3,9 +3,9 @@ package socketmanager
 import (
 	"github.com/gin-gonic/gin"
 	"golang.org/x/net/websocket"
-	"DailyServer/commons/log"
 	"sync"
-	"encoding/json"
+	"fmt"
+	"time"
 )
 
 type SocketManager struct {
@@ -30,24 +30,16 @@ func HandelHttpToWebSocket(c *gin.Context) {
 }
 
 func handleWebSocket(conn *websocket.Conn) {
-	var b = make([]byte, 1024)
-	var data string
-
-	println(conn.Request())
 
 	for {
-		n, err := conn.Read(b)
+		var temp string
+
+		err := websocket.Message.Receive(conn, &temp)
 		if err != nil {
-			log.LogFile.I("failed to read data:%s", err)
+			fmt.Println(err)
 		}
 
-		data += string(b)
-
-		if n == 0 {
-			var temp interface{}
-
-			json.Unmarshal([]byte(data), temp)
-		}
+		fmt.Println("message:", temp, time.Now())
 
 	}
 

@@ -9,7 +9,6 @@ import (
 	"github.com/gin-gonic/gin"
 	"DailyServer/api/modules"
 	"log"
-	"net/http"
 	"time"
 	"DailyServer/commons/socketmanager"
 )
@@ -68,14 +67,8 @@ func (p *program) run() {
 
 	r.GET("/daily/socket", socketmanager.HandelHttpToWebSocket)
 
-	s := &http.Server{
-		Addr:           ":8088",
-		Handler:        r,
-		ReadTimeout:    10 * time.Second,
-		WriteTimeout:   10 * time.Second,
-		MaxHeaderBytes: 1 << 20,
-	}
-	s.ListenAndServe()
+	r.Run(":8088")
+
 }
 
 func (p *program) Stop(s service.Service) error {
