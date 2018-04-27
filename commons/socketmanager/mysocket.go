@@ -5,7 +5,8 @@ import (
 	"golang.org/x/net/websocket"
 	"sync"
 	"fmt"
-	"time"
+	"DailyServer/api/models"
+	"encoding/json"
 )
 
 type SocketManager struct {
@@ -32,15 +33,20 @@ func HandelHttpToWebSocket(c *gin.Context) {
 func handleWebSocket(conn *websocket.Conn) {
 
 	for {
-		var temp string
+		var temp models.Info
+		var bytes []byte
 
-		err := websocket.Message.Receive(conn, &temp)
+		err := websocket.Message.Receive(conn, &bytes)
 		if err != nil {
 			fmt.Println(err)
 		}
 
-		fmt.Println("message:", temp, time.Now())
+		err = json.Unmarshal(bytes, &temp)
+		if err != nil {
+			fmt.Println(err)
+		}
 
+		fmt.Println("message:", temp.FUserID, " : ", temp.FInfo.FContent)
 	}
 
 }
