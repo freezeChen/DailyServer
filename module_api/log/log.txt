@@ -1,0 +1,17 @@
+{"level":"info","time":"2018-08-29 15:32:01","logger":"api","line":"api/user.go:42","msg":"操作成功","path":"/user/list","params":{}}
+{"level":"info","time":"2018-08-29 15:32:15","logger":"api","line":"api/user.go:29","msg":"操作成功","path":"/user/user","params":{}}
+{"level":"info","time":"2018-08-29 15:33:27","logger":"api","line":"api/user.go:29","msg":"操作成功","path":"/user/user","params":{}}
+{"level":"info","time":"2018-08-29 15:35:36","logger":"api","line":"api/user.go:29","msg":"操作成功","path":"/user/user","params":{}}
+{"level":"info","time":"2018-08-29 15:35:37","logger":"api","line":"api/user.go:29","msg":"操作成功","path":"/user/user","params":{}}
+{"level":"info","time":"2018-08-29 15:50:14","logger":"api","line":"api/user.go:29","msg":"操作成功","path":"/user/user","params":{}}
+{"level":"info","time":"2018-08-29 15:50:58","logger":"api","line":"api/user.go:29","msg":"操作成功","path":"/user/user","params":{"id":["6"]}}
+{"level":"info","time":"2018-08-29 15:51:00","logger":"api","line":"api/user.go:29","msg":"操作成功","path":"/user/user","params":{"id":["6"]}}
+{"level":"info","time":"2018-08-29 15:51:00","logger":"api","line":"api/user.go:29","msg":"操作成功","path":"/user/user","params":{"id":["6"]}}
+{"level":"info","time":"2018-08-29 15:51:02","logger":"api","line":"api/user.go:29","msg":"操作成功","path":"/user/user","params":{"id":["6"]}}
+{"level":"info","time":"2018-08-29 15:51:04","logger":"api","line":"api/user.go:29","msg":"操作成功","path":"/user/user","params":{"id":["6"]}}
+{"level":"info","time":"2018-08-29 15:51:49","logger":"api","line":"api/user.go:42","msg":"操作成功","path":"/user/list","params":{}}
+{"level":"info","time":"2018-08-29 16:19:22","logger":"api","line":"api/user.go:40","msg":"操作成功","path":"/user/list","params":{}}
+{"level":"info","time":"2018-08-29 17:30:54","logger":"api","line":"api/user.go:32","msg":"操作成功","path":"/user/user","params":{"id":["1"]}}
+{"level":"info","time":"2018-08-29 17:32:05","logger":"api","line":"api/user.go:32","msg":"操作成功","path":"/user/user","params":{"id":["1234"]}}
+{"level":"info","time":"2018-08-29 17:32:23","logger":"api","line":"api/user.go:32","msg":"操作成功","path":"/user/user","params":{"id":["1"]}}
+{"level":"info","time":"2018-08-29 17:35:31","logger":"api","line":"api/user.go:50","msg":"操作成功","path":"/user/list","params":{}}
