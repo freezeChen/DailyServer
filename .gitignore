@@ -16,3 +16,4 @@
 .idea
 module_api/module_api
 log
+go.sum
