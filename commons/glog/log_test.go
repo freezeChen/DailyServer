@@ -2,18 +2,12 @@ package glog
 
 import (
 	"testing"
-	"fmt"
 )
 
 func TestInitLogger(t *testing.T) {
 	InitLogger()
 
-	defer func() {
-		i := recover()
-		fmt.Println(i)
-	}()
-
-	Painc("123")
+	gLogger.Warn("sfsffffffdf")
 }
 func check(info error) {
 	Painc(info)
