@@ -9,9 +9,12 @@ func main() {
 
 	InitIMConfig()
 
-	if err := InitTCP(); err != nil {
+/*	if err := InitTCP(); err != nil {
 		panic(err)
-	}
+	}*/
+
+	InitMicroClient()
+
 
 	/*if err := InitRPC(":8081"); err != nil {
 		panic(err)

@@ -5,8 +5,8 @@ import (
 	"dailyserver2/commons/db"
 	"dailyserver2/commons/glog"
 	"dailyserver2/commons/gredis"
+	"dailyserver2/module_api/microServer"
 	"dailyserver2/module_api/routers"
-
 	"github.com/kardianos/service"
 	"log"
 	"net/http"
@@ -14,8 +14,6 @@ import (
 	"time"
 )
 
-// gin-swagger middleware
-// swagger embed files
 const (
 	SERVICE_NAME        string = "dailyserver"
 	SERVICE_DISPLAYNAME string = "dailyserver"
@@ -66,6 +64,7 @@ func (s server) Run() {
 	glog.InitLogger()
 	db.InitDb()
 	gredis.InitRedis()
+	microServer.InitMicroServer()
 	r := routers.InitRouter()
 
 	httpServer := http.Server{
