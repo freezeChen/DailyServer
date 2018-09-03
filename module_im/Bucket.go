@@ -10,25 +10,25 @@ type BucketOptions struct {
 
 type Bucket struct {
 	lock     sync.RWMutex
-	chs      map[string]*Channel
+	chs      map[int64]*Channel
 	Operator Operator
 }
 
 func NewBucket() (b *Bucket) {
 	b = new(Bucket)
-	b.chs = make(map[string]*Channel)
+	b.chs = make(map[int64]*Channel)
 	b.Operator = &DefaultOperator{}
 	return b
 }
 
-func (b *Bucket) Connect(key string, c *Channel) (err error) {
+func (b *Bucket) Connect(key int64, c *Channel) (err error) {
 	b.lock.Lock()
 	b.chs[key] = c
 	//重复判断.
 	b.lock.Unlock()
 	return
 }
-func (b *Bucket) Get(key string) (c *Channel) {
+func (b *Bucket) Get(key int64) (c *Channel) {
 	b.lock.RLock()
 	c = b.chs[key]
 	b.lock.RUnlock()
@@ -36,7 +36,7 @@ func (b *Bucket) Get(key string) (c *Channel) {
 }
 
 //下线&离线
-func (b *Bucket) Offline(Key string) {
+func (b *Bucket) Offline(Key int64) {
 	var (
 		ok bool
 	)

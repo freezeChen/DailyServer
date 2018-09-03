@@ -16,5 +16,6 @@
 .idea
 module_api/module_api
 log
+module_im/module_im
 go.sum
 .DS_Store

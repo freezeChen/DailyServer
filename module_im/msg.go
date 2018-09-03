@@ -11,6 +11,8 @@ import (
 
 const (
 	MaxBodySize = uint32(1 << 10)
+	OPer_check  = 0000
+	OPer_msg    = 0001
 )
 const (
 	// size
@@ -35,6 +37,7 @@ var (
 
 	ErrMsgPackLen   = errors.New("default server codec pack length error")
 	ErrMsgHeaderLen = errors.New("default server codec header length error")
+	ErrMsgNotCheck  = errors.New("connect not check")
 )
 
 /**
