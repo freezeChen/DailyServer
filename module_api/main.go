@@ -5,8 +5,8 @@ import (
 	"dailyserver2/commons/db"
 	"dailyserver2/commons/glog"
 	"dailyserver2/commons/gredis"
-	"dailyserver2/module_api/microServer"
 	"dailyserver2/module_api/routers"
+	"dailyserver2/module_api/rpc"
 	"github.com/kardianos/service"
 	"log"
 	"net/http"
@@ -64,7 +64,8 @@ func (s server) Run() {
 	glog.InitLogger()
 	db.InitDb()
 	gredis.InitRedis()
-	microServer.InitMicroServer()
+	rpc.InitRpc()
+
 	r := routers.InitRouter()
 
 	httpServer := http.Server{

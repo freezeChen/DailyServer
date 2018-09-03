@@ -1,10 +1,12 @@
 package main
 
 import (
-	"dailyserver2/commons/glog"
-	"net"
-	"fmt"
 	"bufio"
+	"dailyserver2/commons/glog"
+	"dailyserver2/lib"
+	"encoding/json"
+	"fmt"
+	"net"
 )
 
 func InitTCP() (err error) {
@@ -32,6 +34,7 @@ func acceptTCP(options *options, listen *net.TCPListener) {
 		err  error
 	)
 	for {
+		//等待连接
 		if conn, err = listen.AcceptTCP(); err != nil {
 			glog.Error("listener acceptTCP error:", err)
 			return
@@ -61,7 +64,7 @@ func serverTCP(option *options, conn *net.TCPConn) {
 	var (
 		ch  *Channel
 		msg *Msg
-		key string
+		key int64
 		err error
 	)
 	ch = NewChannel()
@@ -71,14 +74,14 @@ func serverTCP(option *options, conn *net.TCPConn) {
 
 	if msg, err = ch.Ring.Set(); err == nil {
 		//log.LogFile.I("msg :%s", msg)
-
+		//连接合法性校验
 		if key, err = AutoTCP(msg, ch); err == nil {
 			BucketServer.Connect(key, ch)
 		}
 	}
 	if err != nil {
 		conn.Close()
-		glog.Errorf("key:%s, handshake failed error")
+		glog.Errorf("key:%s, handshake failed error", err)
 	}
 
 	go dispatchTCP(conn, ch)
@@ -115,12 +118,21 @@ func dispatchTCP(conn *net.TCPConn, ch *Channel) {
 				err = nil
 				break
 			}
+			var info lib.Info
+			if err = json.Unmarshal(msg.Body, &info); err != nil {
+				goto field
+			}
+
+			if channel, ok := BucketServer.chs[info.Id]; ok {
+				err = channel.Push(msg)
+				if err != nil {
+					glog.Errorf("failed to push msg:%s", err)
+				}
+			}
 
 			fmt.Println("msgready:", string(msg.Body))
-			//log.LogFile.I("msgready: %s", msg)
 
-			//todo  业务逻辑处理
-
+			//将消息发送给自己
 			if err = msg.WriteTCP(&ch.Writer); err != nil {
 				goto field
 			}
@@ -140,8 +152,19 @@ field:
 	return
 }
 
-func AutoTCP(msg *Msg, ch *Channel) (key string, err error) {
-	key, err = Connect(msg)
+func AutoTCP(msg *Msg, ch *Channel) (key int64, err error) {
+	err = msg.ReadTCP(&ch.Reader)
+	if err != nil {
+		return
+	}
+
+	glog.Info("msg operation", msg.Operation)
+	if msg.Operation == OPer_check {
+		key, err = BucketServer.Operator.connect(msg)
+	} else {
+		err = ErrMsgNotCheck
+	}
+
 	return
 }
 
