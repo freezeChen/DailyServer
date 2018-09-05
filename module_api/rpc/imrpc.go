@@ -2,12 +2,12 @@
     @Time : 2018/9/3 下午2:10 
     @Author : 
     @File : imrpc
-    @Software: dailyserver2
+    @Software: DailyServer
 */
 package rpc
 
 import (
-	"dailyserver2/proto"
+	"DailyServer/proto"
 	"github.com/micro/go-micro"
 )
 

@@ -1,4 +1,4 @@
-module dailyserver2
+module DailyServer
 
 require (
 	github.com/PuerkitoBio/purell v1.1.0 // indirect

@@ -1,12 +1,12 @@
 package main
 
 import (
-	"dailyserver2/commons/config"
-	"dailyserver2/commons/db"
-	"dailyserver2/commons/glog"
-	"dailyserver2/commons/gredis"
-	"dailyserver2/module_api/routers"
-	"dailyserver2/module_api/rpc"
+	"DailyServer/commons/config"
+	"DailyServer/commons/db"
+	"DailyServer/commons/glog"
+	"DailyServer/commons/gredis"
+	"DailyServer/module_api/routers"
+	"DailyServer/module_api/rpc"
 	"github.com/kardianos/service"
 	"log"
 	"net/http"

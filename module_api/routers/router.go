@@ -1,11 +1,11 @@
 package routers
 
 import (
-	"dailyserver2/commons/middleware"
-	"dailyserver2/module_api/routers/api"
+	"DailyServer/commons/middleware"
+	"DailyServer/module_api/routers/api"
 	"github.com/gin-gonic/gin"
 	"github.com/swaggo/gin-swagger"
-	_ "dailyserver2/module_api/routers/api/docs"
+	_ "DailyServer/module_api/routers/api/docs"
 	"github.com/swaggo/gin-swagger/swaggerFiles"
 )
 

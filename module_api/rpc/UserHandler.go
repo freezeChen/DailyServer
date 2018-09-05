@@ -2,15 +2,15 @@
     @Time : 2018/8/31 下午2:13 
     @Author : 
     @File : UserHandler
-    @Software: dailyserver2
+    @Software: DailyServer
 */
 package rpc
 
 import (
 	"context"
-	"dailyserver2/commons/util"
-	"dailyserver2/module_api/models"
-	"dailyserver2/proto"
+	"DailyServer/commons/util"
+	"DailyServer/module_api/models"
+	"DailyServer/proto"
 	"fmt"
 )
 

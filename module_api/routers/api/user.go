@@ -1,8 +1,8 @@
 package api
 
 import (
-	"dailyserver2/commons/util"
-	"dailyserver2/module_api/models"
+	"DailyServer/commons/util"
+	"DailyServer/module_api/models"
 	"fmt"
 	"github.com/gin-gonic/gin"
 )

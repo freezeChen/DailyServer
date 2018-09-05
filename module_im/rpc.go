@@ -2,8 +2,8 @@ package main
 
 import (
 	"context"
-	"dailyserver2/commons/glog"
-	"dailyserver2/proto"
+	"DailyServer/commons/glog"
+	"DailyServer/proto"
 	"github.com/micro/go-micro"
 )
 

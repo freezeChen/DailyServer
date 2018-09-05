@@ -1,10 +1,10 @@
 package models
 
 import (
-	"dailyserver2/commons/config"
-	"dailyserver2/commons/db"
-	"dailyserver2/commons/glog"
-	"dailyserver2/commons/util"
+	"DailyServer/commons/config"
+	"DailyServer/commons/db"
+	"DailyServer/commons/glog"
+	"DailyServer/commons/util"
 	"errors"
 	"fmt"
 	"github.com/gin-gonic/gin"

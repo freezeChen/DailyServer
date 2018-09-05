@@ -1,6 +1,7 @@
 package main
 
 import (
+	"DailyServer/commons/glog"
 	"bufio"
 	"bytes"
 	"encoding/binary"
@@ -60,7 +61,13 @@ func (m *Msg) ReadTCP(r *bufio.Reader) (err error) {
 		headBuf   []byte = make([]byte, RawHeaderSize)
 		bodyBuf   []byte
 	)
+	glog.Info("readtcp start")
+	//all, _ := ioutil.ReadAll(r)
+	//fmt.Println("all", string(all))
 	n, err := r.Read(headBuf)
+
+	glog.Info("readtcp read")
+
 
 	fmt.Println("head", headBuf)
 	if n != int(RawHeaderSize) {
