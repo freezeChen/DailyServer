@@ -1,7 +1,7 @@
 package main
 
 import (
-	"dailyserver2/commons/glog"
+	"DailyServer/commons/glog"
 )
 
 func main() {

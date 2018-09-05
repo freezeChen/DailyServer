@@ -1,7 +1,7 @@
 package models
 
 import (
-	"dailyserver2/lib/jsontime"
+	"DailyServer/lib/jsontime"
 )
 
 type User struct {

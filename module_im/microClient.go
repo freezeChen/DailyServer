@@ -2,12 +2,12 @@
     @Time : 2018/8/31 下午2:28 
     @Author : 
     @File : microClient
-    @Software: dailyserver2
+    @Software: DailyServer
 */
 package main
 
 import (
-	"dailyserver2/proto"
+	"DailyServer/proto"
 	"github.com/micro/go-micro"
 )
 

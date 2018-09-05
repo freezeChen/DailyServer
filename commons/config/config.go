@@ -1,7 +1,7 @@
 package config
 
 import (
-	"dailyserver2/commons/util"
+	"DailyServer/commons/util"
 	cfg "github.com/Unknwon/goconfig"
 )
 

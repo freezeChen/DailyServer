@@ -2,7 +2,7 @@ package main
 
 import (
 	"context"
-	"dailyserver2/proto"
+	"DailyServer/proto"
 )
 
 type Operator interface {

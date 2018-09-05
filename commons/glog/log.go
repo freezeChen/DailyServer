@@ -1,7 +1,7 @@
 package glog
 
 import (
-	"dailyserver2/commons/util"
+	"DailyServer/commons/util"
 	"go.uber.org/zap"
 	"go.uber.org/zap/zapcore"
 	"time"

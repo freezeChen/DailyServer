@@ -2,13 +2,13 @@
     @Time : 2018/8/31 下午2:22 
     @Author : frozenChen
     @File : microServer
-    @Software: dailyserver2
+    @Software: DailyServer
 */
 package rpc
 
 import (
-	"dailyserver2/commons/glog"
-	"dailyserver2/proto"
+	"DailyServer/commons/glog"
+	"DailyServer/proto"
 	"github.com/micro/go-micro"
 )
 

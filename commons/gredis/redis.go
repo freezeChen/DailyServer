@@ -1,7 +1,7 @@
 package gredis
 
 import (
-	"dailyserver2/commons/config"
+	"DailyServer/commons/config"
 	"encoding/json"
 	"github.com/garyburd/redigo/redis"
 	"time"

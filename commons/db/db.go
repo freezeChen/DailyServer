@@ -1,8 +1,8 @@
 package db
 
 import (
-	. "dailyserver2/commons/config"
-	"dailyserver2/commons/glog"
+	. "DailyServer/commons/config"
+	"DailyServer/commons/glog"
 	"fmt"
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/go-xorm/core"

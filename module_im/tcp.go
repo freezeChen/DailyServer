@@ -1,9 +1,9 @@
 package main
 
 import (
+	"DailyServer/commons/glog"
+	"DailyServer/lib"
 	"bufio"
-	"dailyserver2/commons/glog"
-	"dailyserver2/lib"
 	"encoding/json"
 	"fmt"
 	"net"
@@ -80,8 +80,10 @@ func serverTCP(option *options, conn *net.TCPConn) {
 		}
 	}
 	if err != nil {
+		ch.Close()
 		conn.Close()
 		glog.Errorf("key:%s, handshake failed error", err)
+		return
 	}
 
 	go dispatchTCP(conn, ch)
@@ -155,6 +157,7 @@ field:
 func AutoTCP(msg *Msg, ch *Channel) (key int64, err error) {
 	err = msg.ReadTCP(&ch.Reader)
 	if err != nil {
+		glog.Error(err)
 		return
 	}
 

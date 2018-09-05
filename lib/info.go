@@ -2,7 +2,7 @@
     @Time : 2018/9/3 下午4:56 
     @Author : frozenchen
     @File : info
-    @Software: dailyserver2
+    @Software: DailyServer
 */
 package lib
 
