@@ -93,7 +93,7 @@ func (m *Msg) ReadTCP(r *bufio.Reader) (err error) {
 	} else {
 		m.Body = nil
 	}
-
+	
 	fmt.Println(string(m.Body))
 
 	return

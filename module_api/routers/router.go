@@ -3,9 +3,9 @@ package routers
 import (
 	"DailyServer/commons/middleware"
 	"DailyServer/module_api/routers/api"
+	_ "DailyServer/module_api/routers/api/docs"
 	"github.com/gin-gonic/gin"
 	"github.com/swaggo/gin-swagger"
-	_ "DailyServer/module_api/routers/api/docs"
 	"github.com/swaggo/gin-swagger/swaggerFiles"
 )
 
@@ -19,7 +19,6 @@ func InitRouter() *gin.Engine {
 		group.GET("/user", userController.GetUser)
 		group.GET("/list", userController.GetUserList)
 	}
-
 
 	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 	//r.GET("swagger", func(context *gin.Context) {
