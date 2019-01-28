@@ -48,7 +48,7 @@ func Sugar() *zap.SugaredLogger {
 
 func Info(temp string, args ...interface{}) {
 	defer gLogger.Sync()
-	gLogger.Sugar().Infof(temp,args)
+	gLogger.Sugar().Info(temp,args)
 }
 func APIInfo(path string, params interface{}) {
 	defer gLogger.Sync()
