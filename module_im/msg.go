@@ -62,14 +62,13 @@ func (m *Msg) ReadTCP(r *bufio.Reader) (err error) {
 		bodyBuf   []byte
 	)
 	glog.Info("readtcp start")
-	//all, _ := ioutil.ReadAll(r)
-	//fmt.Println("all", string(all))
+
 	n, err := r.Read(headBuf)
 
 	glog.Info("readtcp read")
 
 
-	fmt.Println("head", headBuf)
+	fmt.Println("head", headBuf,string(headBuf))
 	if n != int(RawHeaderSize) {
 		err = ErrMsgHeaderLen
 		return

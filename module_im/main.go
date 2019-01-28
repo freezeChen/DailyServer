@@ -2,6 +2,7 @@ package main
 
 import (
 	"DailyServer/commons/glog"
+	"net/http"
 )
 
 func main() {
@@ -16,5 +17,8 @@ func main() {
 	InitMicroClient()
 	glog.Debug("im RPC is running...")
 	//glog.Debug("logic server is running ...")
+	http.HandleFunc("/ws", InitWebSocket)
+	http.ListenAndServe(":8888", nil)
+
 	InitSignal()
 }
