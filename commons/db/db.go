@@ -15,7 +15,7 @@ const CONN_CAP int = 2048
 
 var (
 	err    error
-	engine *xorm.EngineGroup
+	engine *xorm.Engine
 	once   sync.Once
 )
 
@@ -23,12 +23,10 @@ func InitDb() {
 	once.Do(func() {
 		db_name := Cfg.MustValue("mysql", "db_name", "")
 		master := Cfg.MustValue("mysql", "master", "")
-		slave := Cfg.MustValue("mysql", "slave", "")
-		conns := []string{
-			master + "/" + db_name + "?charset=utf8",
-			slave + "/" + db_name + "?charset=utf8",
-		}
-		engine, err = xorm.NewEngineGroup("mysql", conns, xorm.LeastConnPolicy())
+
+		source := master + "/" + db_name + "?charset=utf8"
+
+		engine, err = xorm.NewEngine("mysql", source)
 		if err != nil {
 			glog.Info("mysql", fmt.Sprintf("Failed to newengine: %s", err))
 		} else {
@@ -44,7 +42,7 @@ func InitDb() {
 	}
 }
 
-func NewEngine() (*xorm.EngineGroup, error) {
+func NewEngine() (*xorm.Engine, error) {
 	return engine, err
 }
 

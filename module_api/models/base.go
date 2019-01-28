@@ -65,7 +65,7 @@ func Response(self *JsonResult, ctx *gin.Context) {
 	//ctx.JSON(http.StatusOK, str)
 }
 
-func engine() *xorm.EngineGroup {
+func engine() *xorm.Engine {
 	group, _ := db.NewEngine()
 	return group
 }

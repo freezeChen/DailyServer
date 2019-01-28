@@ -1,8 +1,8 @@
 package main
 
 import (
-	"context"
 	"DailyServer/proto"
+	"context"
 )
 
 type Operator interface {
@@ -18,6 +18,5 @@ func (o *DefaultOperator) connect(msg *Msg) (key int64, err error) {
 	if err == nil {
 		key = userRes.User.Id
 	}
-
 	return
 }

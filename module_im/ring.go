@@ -1,9 +1,6 @@
 package main
 
 import "errors"
-import (
-
-	)
 
 var (
 	ErrRingEmpty = errors.New("ring buffer empty")
@@ -20,8 +17,8 @@ type Ring struct {
 
 func InitRing() (r *Ring) {
 	r = new(Ring)
-	r.num = 5
-	r.data = make([]Msg, 5)
+	r.num = 7
+	r.data = make([]Msg, 8)
 	return
 }
 
@@ -29,31 +26,22 @@ func (r *Ring) Get() (msg *Msg, err error) {
 	if r.rp == r.wp {
 		return nil, ErrRingEmpty
 	}
-	msg = &r.data[r.rp]
+	msg = &r.data[r.rp&r.num]
 	return
 }
 
 func (r *Ring) getAdv() {
-	if r.rp >= r.num-1 {
-		r.rp = 0
-	} else {
-		r.rp++
-	}
+	r.rp++
 }
 
 func (r *Ring) Set() (msg *Msg, err error) {
-/*
-	if r.wp-r.rp > r.num {
+	if r.wp-r.rp >= r.num {
 		return nil, ErrRingFull
-	}*/
-	msg = &r.data[r.wp]
+	}
+	msg = &r.data[r.wp&r.num]
 	return
 }
 
 func (r *Ring) SetAdv() {
-	if r.wp >= r.num-1 {
-		r.wp = 0
-	} else {
-		r.wp++
-	}
+	r.wp++
 }

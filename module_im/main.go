@@ -13,12 +13,8 @@ func main() {
 	if err := InitRPC(); err != nil {
 		glog.Painc(err)
 	}
-
 	InitMicroClient()
-
-	glog.Debugf("im RPC is running...")
-
-	//glog.Debugf("logic server is running ...")
-
+	glog.Debug("im RPC is running...")
+	//glog.Debug("logic server is running ...")
 	InitSignal()
 }
