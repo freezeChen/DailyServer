@@ -1,15 +1,11 @@
 package models
 
-import (
-	"DailyServer/lib/jsontime"
-)
-
 type User struct {
-	Id         int64             `xorm:"pk autoincr BIGINT(12)"`
-	Name       string            `xorm:"VARCHAR(20)"`
-	Account    string            `xorm:"VARCHAR(20)"`
-	Password   string            `xorm:"VARCHAR(32)"`
-	Createtime jsontime.JsonTime `xorm:"TIMESTAMP(6)"`
+	Id       int64  `json:"id" xorm:"pk 'id'"`          //null
+	Account  string `json:"account" xorm:"'account'"`   //null
+	Password string `json:"password" xorm:"'password'"` //null
+	Nickname string `json:"nickname" xorm:"'nickname'"` //null
+	Sex      int64  `json:"sex" xorm:"'sex'"`           //null
 }
 
 func GetUserByID(id int64) (*User, error) {

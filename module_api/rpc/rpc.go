@@ -10,11 +10,15 @@ import (
 	"DailyServer/commons/glog"
 	"DailyServer/proto"
 	"github.com/micro/go-micro"
+	"time"
 )
 
 func InitRpc() {
 	go func() {
-		microS := micro.NewService(micro.Name("module_user"))
+		microS := micro.NewService(micro.Name("module_user"),
+			micro.RegisterTTL(25*time.Second),
+			micro.RegisterInterval(20*time.Second),
+		)
 		microS.Init()
 
 		proto.RegisterUserServiceHandler(microS.Server(), new(UserHandler))

@@ -7,6 +7,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"net"
+	"runtime"
 )
 
 func InitTCP() (err error) {
@@ -24,7 +25,9 @@ func InitTCP() (err error) {
 
 	BucketServer = NewBucket()
 
-	go acceptTCP(Options, listener)
+	for i := 0; i < runtime.NumCPU(); i++ {
+		go acceptTCP(Options, listener)
+	}
 	return
 }
 
@@ -60,7 +63,8 @@ func acceptTCP(options *options, listen *net.TCPListener) {
 }
 
 func serverTCP(option *options, conn *net.TCPConn) {
-	fmt.Println("tcp addr %s and %s", conn.LocalAddr(), conn.RemoteAddr())
+	fmt.Printf("tcp addr %s and %s", conn.LocalAddr(), conn.RemoteAddr())
+
 	var (
 		ch  *Channel
 		msg *Msg
@@ -102,7 +106,7 @@ func serverTCP(option *options, conn *net.TCPConn) {
 	conn.Close()
 	ch.Close()
 
-	fmt.Println("read is error(%s)", err)
+	fmt.Printf("read is error(%s)", err)
 }
 
 func dispatchTCP(conn *net.TCPConn, ch *Channel) {
