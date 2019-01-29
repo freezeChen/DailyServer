@@ -24,7 +24,7 @@ func InitLogger() {
 
 	syncer, _, _ := zap.Open("stderr")
 	syncers := zapcore.NewMultiWriteSyncer(writerSyncer, syncer)
-	encoder := zapcore.NewJSONEncoder(zapcore.EncoderConfig{
+	encoder := zapcore.NewConsoleEncoder(zapcore.EncoderConfig{
 		TimeKey:        "time",
 		LevelKey:       "level",
 		NameKey:        "logger",
@@ -34,6 +34,7 @@ func InitLogger() {
 		LineEnding:     zapcore.DefaultLineEnding,
 		EncodeLevel:    zapcore.LowercaseLevelEncoder,
 		EncodeTime:     timeEncoder,
+
 		EncodeDuration: zapcore.SecondsDurationEncoder,
 		EncodeCaller:   zapcore.ShortCallerEncoder,
 	})
@@ -46,9 +47,9 @@ func Sugar() *zap.SugaredLogger {
 	return gLogger.Sugar()
 }
 
-func Info(temp string, args ...interface{}) {
+func Info( args ...interface{}) {
 	defer gLogger.Sync()
-	gLogger.Sugar().Info(temp,args)
+	gLogger.Sugar().Info(args)
 }
 func APIInfo(path string, params interface{}) {
 	defer gLogger.Sync()
