@@ -21,7 +21,7 @@ func NewBucket() (b *Bucket) {
 	return b
 }
 
-func (b *Bucket) Connect(key int64, c *Channel) (err error) {
+func (b *Bucket) Connect(key int64, c *Channel) {
 	b.lock.Lock()
 	b.chs[key] = c
 	//重复判断.

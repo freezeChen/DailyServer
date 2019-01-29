@@ -3,11 +3,11 @@ package main
 import (
 	"DailyServer/commons/glog"
 	"bufio"
-	"bytes"
 	"encoding/binary"
 	"encoding/json"
 	"errors"
 	"fmt"
+	"github.com/gorilla/websocket"
 )
 
 const (
@@ -17,19 +17,20 @@ const (
 )
 const (
 	// size
-	PackSize      uint = 4
-	HeaderSize    uint = 2
-	VerSize       uint = 2
-	OperationSize uint = 4
-	SeqIdSize     uint = 4
-	RawHeaderSize uint = PackSize + HeaderSize + VerSize + OperationSize + SeqIdSize
-	MaxPackSize        = MaxBodySize + uint32(RawHeaderSize)
+	PackSize      = 4
+	HeaderSize    = 2
+	VerSize       = 2
+	OperationSize = 4
+	SeqIdSize     = 4
+	RawHeaderSize = PackSize + HeaderSize + VerSize + OperationSize + SeqIdSize
+	MaxPackSize   = MaxBodySize + uint32(RawHeaderSize)
 	// offset
 	PackOffset      = 0
 	HeaderOffset    = PackOffset + PackSize
 	VerOffset       = HeaderOffset + HeaderSize
 	OperationOffset = VerOffset + VerSize
 	SeqIdOffset     = OperationOffset + OperationSize
+	BodyOffset      = SeqIdOffset + SeqIdSize
 )
 
 var (
@@ -44,7 +45,7 @@ var (
 /**
 协议 [0 0 0 0, 0 0, 0 0, 0 0 0 0, 0 0 0 0, ...]
 	包总长-	协议长度(16),版本,通讯代号,身份,消息体
- */
+*/
 type Msg struct {
 	Ver       uint16          `json:"ver"`
 	Operation uint32          `json:"operation"`
@@ -61,14 +62,9 @@ func (m *Msg) ReadTCP(r *bufio.Reader) (err error) {
 		headBuf   []byte = make([]byte, RawHeaderSize)
 		bodyBuf   []byte
 	)
-	glog.Info("readtcp start")
 
 	n, err := r.Read(headBuf)
-
-	glog.Info("readtcp read")
-
-
-	fmt.Println("head", headBuf,string(headBuf))
+	fmt.Println("head", headBuf)
 	if n != int(RawHeaderSize) {
 		err = ErrMsgHeaderLen
 		return
@@ -92,7 +88,7 @@ func (m *Msg) ReadTCP(r *bufio.Reader) (err error) {
 	} else {
 		m.Body = nil
 	}
-	
+
 	fmt.Println(string(m.Body))
 
 	return
@@ -113,17 +109,59 @@ func (m *Msg) WriteTCP(w *bufio.Writer) (err error) {
 	return
 }
 
-func IntToBytes(n int) []byte {
-	tmp := int32(n)
-	bytesBuffer := bytes.NewBuffer([]byte{})
-	binary.Write(bytesBuffer, binary.BigEndian, tmp)
-	return bytesBuffer.Bytes()
+func (m *Msg) ReadWebSocket(ws *websocket.Conn) (err error) {
+	var (
+		bodyLen   uint32
+		headerLen uint16
+		packLen   uint32
+		allBuf    []byte
+	)
+
+	_, allBuf, err = ws.ReadMessage()
+	if err != nil {
+		return
+	}
+
+	if len(allBuf) < (RawHeaderSize) {
+		return ErrMsgHeaderLen
+	}
+
+	packLen = binary.BigEndian.Uint32(allBuf[PackOffset:HeaderOffset])
+	headerLen = binary.BigEndian.Uint16(allBuf[HeaderOffset:VerOffset])
+	m.Ver = binary.BigEndian.Uint16(allBuf[VerOffset:OperationOffset])
+	m.Operation = binary.BigEndian.Uint32(allBuf[OperationOffset:SeqIdOffset])
+	m.SeqId = binary.BigEndian.Uint32(allBuf[SeqIdOffset:])
+
+	if packLen > MaxPackSize {
+		return ErrMsgPackLen
+	}
+
+	if headerLen != RawHeaderSize {
+		return ErrMsgHeaderLen
+	}
+	if bodyLen = packLen - uint32(headerLen); bodyLen > 0 {
+
+		m.Body = allBuf[headerLen:packLen]
+		glog.Info("websocket msg:", string(m.Body))
+	} else {
+		m.Body = nil
+	}
+	return nil
 }
 
-//字节转换成整形
-func BytesToInt(b []byte) int {
-	bytesBuffer := bytes.NewBuffer(b)
-	var tmp int32
-	binary.Read(bytesBuffer, binary.BigEndian, &tmp)
-	return int(tmp)
+func (m *Msg) WriteWebSocket(ws *websocket.Conn) (err error) {
+	var (
+		buf     = make([]byte, RawHeaderSize+len(m.Body))
+		packLen = uint32(RawHeaderSize) + uint32(len(m.Body))
+	)
+	binary.BigEndian.PutUint32(buf, packLen)
+	binary.BigEndian.PutUint16(buf[HeaderOffset:], RawHeaderSize)
+	binary.BigEndian.PutUint16(buf[VerOffset:], uint16(m.Ver))
+	binary.BigEndian.PutUint32(buf[OperationOffset:], m.Operation)
+	binary.BigEndian.PutUint32(buf[SeqIdOffset:], m.SeqId)
+
+	buf = append(buf, m.Body...)
+
+	err = ws.WriteMessage(websocket.BinaryMessage, buf)
+	return
 }
