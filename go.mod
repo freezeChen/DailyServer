@@ -33,7 +33,7 @@ require (
 	github.com/mailru/easyjson v0.0.0-20180823135443-60711f1a8329 // indirect
 	github.com/mattn/go-isatty v0.0.4 // indirect
 	github.com/mattn/go-sqlite3 v1.9.0 // indirect
-	github.com/micro/cli v0.0.0-20180830071301-8b9d33ec2f19 // indirect
+	github.com/micro/cli v0.0.0-20180830071301-8b9d33ec2f19
 	github.com/micro/go-log v0.0.0-20170512141327-cbfa9447f9b6 // indirect
 	github.com/micro/go-micro v0.11.0
 	github.com/micro/go-rcache v0.0.0-20180418165751-a581a57b5133 // indirect
