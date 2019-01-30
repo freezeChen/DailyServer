@@ -1,3 +1,3 @@
 #! /bin/bash
-cd rpc/proto
-protoc  --micro_out=. --go_out=. user.proto
+cd grpc
+protoc  --micro_out=. --go_out=. *.proto
