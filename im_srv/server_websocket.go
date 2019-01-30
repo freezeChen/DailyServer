@@ -55,7 +55,7 @@ func ServeWebSocket(srv *Server, ws *websocket.Conn) {
 		glog.Error(err)
 	}
 
-	go dispatchWebsocket(ws, ch)
+	go srv.dispatchWebsocket(ws, ch)
 
 	for {
 		if msg, err = ch.Ring.Set(); err != nil {

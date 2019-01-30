@@ -1,30 +1,24 @@
 /*
-    @Time : 2018/8/31 下午2:13 
-    @Author : 
-    @File : UserHandler
-    @Software: DailyServer
+   @Time : 2018/8/31 下午2:13
+   @Author :
+   @File : LogicHandler
+   @Software: DailyServer
 */
 package rpc
 
 import (
-	"context"
-	"DailyServer/commons/util"
-	"DailyServer/logic_srv/models"
 	"DailyServer/grpc"
-	"fmt"
+	"DailyServer/logic_srv/models"
+	"context"
 )
 
-type UserHandler struct{}
+type LogicHandler struct{}
 
-func (UserHandler) Check(ctx context.Context, req *grpc.CheckUserReq, res *grpc.CheckUserRes) error {
-
-	user, err := models.GetUserByID(util.ToInt64(req.Info))
+func (LogicHandler) Check(ctx context.Context, req *grpc.CheckReq, reply *grpc.CheckReply) error {
+	user, err := models.GetUserByID(int64(req.Id))
 	if err != nil {
 		return err
 	}
-
-	//models.GetUserByID()
-	fmt.Println(req.Info)
-	res.User = &grpc.User{Id: user.Id}
+	reply.Key = int32(user.Id + 1)
 	return nil
 }
