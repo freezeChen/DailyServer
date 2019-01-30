@@ -8,8 +8,32 @@ const seqOffset = 12;
 var textEncoder = new TextEncoder();
 var textDecoder = new TextDecoder();
 
+
+window.onload = function () {
+    var Words = document.getElementById("words");
+    var Who = document.getElementById("who");
+    var TalkWords = document.getElementById("talkwords");
+    var TalkSub = document.getElementById("talksub");
+
+    TalkSub.onclick = function () {
+        //定义空字符串
+        var str = "";
+        if (TalkWords.value == "") {
+            // 消息为空时弹窗
+            alert("消息不能为空");
+            return;
+        }
+
+        send(TalkWords.value);
+
+        TalkWords.value = "";
+    }
+};
+
 function auth() {
-    var bodyBuf = textEncoder.encode("5");
+    var id = document.getElementById("id");
+
+    var bodyBuf = textEncoder.encode(id.value);
     let headBuf = new ArrayBuffer(rawHeaderLen);
     var headerView = new DataView(headBuf, 0);
     headerView.setInt32(packetOffset, rawHeaderLen + bodyBuf.byteLength);
@@ -21,15 +45,14 @@ function auth() {
 }
 
 
-function send() {
-    var input = $("#msg").val();
+function send(ms) {
+    var id = document.getElementById("id");
+    var toid = document.getElementById("toid");
 
-
-    console.log(input);
     var msg = {
-        id: 5,
-        sid: 5,
-        msg: input
+        id: parseInt(id.value),
+        sid: parseInt(toid.value),
+        msg: ms
     };
 
     var jsonStr = JSON.stringify(msg);
@@ -65,6 +88,7 @@ function mergeArrayBuffer(ab1, ab2) {
 }
 
 function link() {
+    var Words = document.getElementById("words");
     ws = new WebSocket("ws://localhost:8888/ws");
     ws.binaryType = 'arraybuffer';
     ws.onopen = function () {
@@ -79,16 +103,16 @@ function link() {
         var ver = dataView.getInt16(verOffset);
         var op = dataView.getInt32(opOffset);
         var seq = dataView.getInt32(seqOffset);
-        var msgBody = '{"id":5,"sid":5,"msg":"发送内容"}';
 
-        msgBody = textDecoder.decode(data.slice(headerLen, packetLen));
-        var ss = '{"id":5,"sid":5,"msg":"发送内容"}';
-        console.log(msgBody.length, ss.length);
+        var msgBody = textDecoder.decode(data.slice(headerLen, packetLen));
 
-        console.log("receiveHeader: packetLen=" + packetLen, "headerLen=" + headerLen, "ver=" + ver, "op=" + op, "seq=" + seq, "body=|" + msgBody.toString() + "|");
-        // var parseJSON = jQuery.parseJSON(msgBody.trim());
+
         var parse = JSON.parse(msgBody);
-        console.log(parse)
+
+
+        Words.innerHTML = Words.innerHTML + '<div class="btalk"><span> wo:' + parse["msg"] + '</span></div>';
+        Words.scrollTop = Words.scrollHeight;
+
 
     };
     ws.onclose = function (evt) {

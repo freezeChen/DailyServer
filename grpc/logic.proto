@@ -1,0 +1,19 @@
+syntax = "proto3";
+package grpc;
+
+service LogicService {
+
+	rpc Check (CheckReq) returns (CheckReply) {
+	}
+
+}
+
+message CheckReq {
+	int32 id = 1;
+}
+
+message CheckReply {
+	int32 key = 1;
+}
+
+
