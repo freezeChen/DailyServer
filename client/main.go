@@ -19,7 +19,9 @@ import (
 func main() {
 
 	glog.InitLogger()
-	conn, err := net.Dial("tcp", "127.0.0.1:8020")
+
+	addr, _ := net.ResolveTCPAddr("tcp", "127.0.0.1:8020")
+	conn, err := net.DialTCP("tcp", nil, addr)
 	if err != nil {
 		fmt.Println(err)
 	}
@@ -43,6 +45,7 @@ func main() {
 	}()
 
 	msg := new(grpc.Proto)
+	msg.Ver = 1
 	msg.Opr = grpc.OpAuth
 	msg.Body = []byte("5")
 
@@ -50,6 +53,7 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
+
 
 	info := new(lib.Info)
 	info.Id = 5
@@ -60,6 +64,14 @@ func main() {
 
 	msg.Body = bytes
 
-	msg.WriteTCP(writer)
+	err = msg.WriteTCP(writer)
+	if err != nil {
+		panic(err)
+	}
 
+
+
+	select {
+
+	}
 }

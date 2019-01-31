@@ -112,9 +112,12 @@ func (p *Proto) ReadTCP(r *bufio.Reader) (err error) {
 		headBuf   []byte = make([]byte, RawHeaderSize)
 		bodyBuf   []byte
 	)
+	//headBuf, err = r.Peek(RawHeaderSize)
+
+
 
 	n, err := r.Read(headBuf)
-	fmt.Println("head", headBuf)
+	glog.Info("head", headBuf, len(headBuf))
 	if n != int(RawHeaderSize) {
 		err = ErrMsgHeaderLen
 		return
@@ -125,7 +128,7 @@ func (p *Proto) ReadTCP(r *bufio.Reader) (err error) {
 	p.Opr = int32(binary.BigEndian.Uint32(headBuf[OperationOffset:SeqIdOffset]))
 	p.Id = int32(binary.BigEndian.Uint32(headBuf[SeqIdOffset:]))
 
-	glog.Info(p)
+	glog.Info("proto:", p)
 
 	if packLen > MaxPackSize {
 		return ErrMsgPackLen
@@ -149,12 +152,15 @@ func (p *Proto) WriteTCP(w *bufio.Writer) (err error) {
 		packLen uint32
 	)
 	packLen = uint32(RawHeaderSize) + uint32(len(p.Body))
+
+	glog.Info(packLen, uint16(RawHeaderSize), uint16(p.Ver), uint32(p.Opr))
 	binary.Write(w, binary.BigEndian, packLen)
 	binary.Write(w, binary.BigEndian, uint16(RawHeaderSize))
 	binary.Write(w, binary.BigEndian, uint16(p.Ver))
 	binary.Write(w, binary.BigEndian, uint32(p.Opr))
 	binary.Write(w, binary.BigEndian, uint32(p.Id))
 	binary.Write(w, binary.BigEndian, p.Body)
+
 	err = w.Flush()
 	return
 }
