@@ -25,15 +25,15 @@ func InitLogger() {
 	syncer, _, _ := zap.Open("stderr")
 	syncers := zapcore.NewMultiWriteSyncer(writerSyncer, syncer)
 	encoder := zapcore.NewConsoleEncoder(zapcore.EncoderConfig{
-		TimeKey:        "time",
-		LevelKey:       "level",
-		NameKey:        "logger",
-		CallerKey:      "line",
-		MessageKey:     "msg",
-		StacktraceKey:  "stacktrace",
-		LineEnding:     zapcore.DefaultLineEnding,
-		EncodeLevel:    zapcore.LowercaseLevelEncoder,
-		EncodeTime:     timeEncoder,
+		TimeKey:       "time",
+		LevelKey:      "level",
+		NameKey:       "logger",
+		CallerKey:     "line",
+		MessageKey:    "msg",
+		StacktraceKey: "stacktrace",
+		LineEnding:    zapcore.DefaultLineEnding,
+		EncodeLevel:   zapcore.LowercaseColorLevelEncoder,
+		EncodeTime:    timeEncoder,
 
 		EncodeDuration: zapcore.SecondsDurationEncoder,
 		EncodeCaller:   zapcore.ShortCallerEncoder,
@@ -47,10 +47,16 @@ func Sugar() *zap.SugaredLogger {
 	return gLogger.Sugar()
 }
 
-func Info( args ...interface{}) {
+func Info(args ...interface{}) {
 	defer gLogger.Sync()
 	gLogger.Sugar().Info(args)
 }
+
+func Infof(format string, args ...interface{}) {
+	defer gLogger.Sync()
+	gLogger.Sugar().Infof(format, args)
+}
+
 func APIInfo(path string, params interface{}) {
 	defer gLogger.Sync()
 	gLogger.Named("api").Info("操作成功", zap.String("path", path), zap.Any("params", params))

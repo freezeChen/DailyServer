@@ -63,7 +63,6 @@ func acceptTCP(server *Server, options *options, listen *net.TCPListener) {
 }
 
 func (s *Server) serverTCP(option *options, conn *net.TCPConn) {
-	fmt.Printf("tcp addr %s and %s", conn.LocalAddr(), conn.RemoteAddr())
 
 	var (
 		ch    *Channel
@@ -110,7 +109,7 @@ func (s *Server) serverTCP(option *options, conn *net.TCPConn) {
 	conn.Close()
 	ch.Close()
 
-	fmt.Printf("read is error(%s)", err)
+	glog.Errorf("ReadTCP is error(%s)", err)
 }
 
 func (s *Server) dispatchTCP(conn *net.TCPConn, ch *Channel) {
