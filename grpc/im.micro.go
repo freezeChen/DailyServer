@@ -12,6 +12,8 @@ It has these top-level messages:
 	Proto
 	PushMsgReq
 	PushMsgReply
+	ReceiveReq
+	ReceiveReply
 	CheckReq
 	CheckReply
 */

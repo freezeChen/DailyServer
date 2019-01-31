@@ -14,4 +14,6 @@ const (
 	MICRO_JOB_SRV   = "vip.frozens.srv.job"
 	MICRO_TTL       = 30 * time.Second
 	MICRO_Interval  = 20 * time.Second
+
+	JOB_TOPIC_SINGLECHAT = "job_singleChat"
 )

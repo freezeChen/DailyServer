@@ -1,7 +1,6 @@
 module DailyServer
 
 require (
-	contrib.go.opencensus.io/integrations/ocsql v0.1.3 // indirect
 	github.com/PuerkitoBio/purell v1.1.0 // indirect
 	github.com/PuerkitoBio/urlesc v0.0.0-20170810143723-de5bf2ad4578 // indirect
 	github.com/SAP/go-hdb v0.13.2 // indirect
@@ -13,7 +12,6 @@ require (
 	github.com/boombuler/barcode v1.0.0 // indirect
 	github.com/briankassouf/jose v0.9.1 // indirect
 	github.com/bsm/sarama-cluster v2.1.15+incompatible // indirect
-	github.com/c-bata/go-prompt v0.2.3 // indirect
 	github.com/centrify/cloud-golang-sdk v0.0.0-20180119173102-7c97cc6fde16 // indirect
 	github.com/chrismalek/oktasdk-go v0.0.0-20181212195951-3430665dfaa0 // indirect
 	github.com/circonus-labs/circonus-gometrics v2.2.6+incompatible // indirect
@@ -33,7 +31,6 @@ require (
 	github.com/gin-contrib/sse v0.0.0-20170109093832-22d885f9ecc7 // indirect
 	github.com/gin-gonic/gin v1.3.0
 	github.com/go-errors/errors v1.0.1 // indirect
-	github.com/go-ini/ini v1.39.3 // indirect
 	github.com/go-ldap/ldap v3.0.1+incompatible // indirect
 	github.com/go-ole/go-ole v1.2.2 // indirect
 	github.com/go-openapi/jsonpointer v0.0.0-20180825180259-52eb3d4b47c6 // indirect
@@ -47,8 +44,6 @@ require (
 	github.com/gocql/gocql v0.0.0-20190126123547-8516aabb0f99 // indirect
 	github.com/gogo/googleapis v1.1.0 // indirect
 	github.com/golang/protobuf v1.2.0
-	github.com/google/wire v0.2.1 // indirect
-	github.com/googleapis/gax-go v2.0.2+incompatible // indirect
 	github.com/gorhill/cronexpr v0.0.0-20180427100037-88b0669f7d75 // indirect
 	github.com/gorilla/websocket v1.4.0
 	github.com/grpc-ecosystem/grpc-gateway v1.6.4 // indirect
@@ -81,21 +76,16 @@ require (
 	github.com/jeffchao/backoff v0.0.0-20140404060208-9d7fd7aa17f2 // indirect
 	github.com/jefferai/jsonx v1.0.0 // indirect
 	github.com/json-iterator/go v1.1.5
-	github.com/kardianos/osext v0.0.0-20170510131534-ae77be60afb1 // indirect
-	github.com/kardianos/service v0.0.0-20180823001510-8f267d80f2eb
 	github.com/keybase/go-crypto v0.0.0-20181127160227-255a5089e85a // indirect
 	github.com/lyft/protoc-gen-validate v0.0.13 // indirect
 	github.com/mailru/easyjson v0.0.0-20180823135443-60711f1a8329 // indirect
 	github.com/mattbaird/elastigo v0.0.0-20170123220020-2fe47fd29e4b // indirect
-	github.com/mattn/go-runewidth v0.0.4 // indirect
-	github.com/mattn/go-zglob v0.0.1 // indirect
 	github.com/michaelklishin/rabbit-hole v1.4.0 // indirect
 	github.com/micro/cli v0.1.0
+	github.com/micro/go-config v0.13.3
 	github.com/micro/go-micro v0.24.0
 	github.com/micro/go-plugins v0.22.0
-	github.com/microcosm-cc/bluemonday v1.0.2 // indirect
 	github.com/miekg/dns v1.1.4 // indirect
-	github.com/openzipkin/zipkin-go v0.1.5 // indirect
 	github.com/ory-am/common v0.4.0 // indirect
 	github.com/ory/dockertest v3.3.4+incompatible // indirect
 	github.com/pborman/uuid v0.0.0-20180827223501-4c1ecd6722e8 // indirect
@@ -108,12 +98,12 @@ require (
 	github.com/swaggo/gin-swagger v1.0.0
 	github.com/swaggo/swag v1.3.2
 	github.com/vmware/vic v1.4.3 // indirect
+	go.etcd.io/bbolt v1.3.2 // indirect
 	go.uber.org/zap v1.9.1
 	gopkg.in/asn1-ber.v1 v1.0.0-20181015200546-f715ec2f112d // indirect
 	gopkg.in/go-playground/assert.v1 v1.2.1 // indirect
 	gopkg.in/go-playground/validator.v8 v8.18.2 // indirect
 	gopkg.in/gorethink/gorethink.v4 v4.1.0 // indirect
-	gopkg.in/ini.v1 v1.39.3 // indirect
 	gopkg.in/ory-am/dockertest.v2 v2.2.3 // indirect
 	gopkg.in/square/go-jose.v2 v2.2.2 // indirect
 	launchpad.net/gocheck v0.0.0-20140225173054-000000000087 // indirect

@@ -103,6 +103,12 @@ func (s *Server) serverTCP(option *options, conn *net.TCPConn) {
 			break
 		}
 
+		if proto.Opr != grpc.OpAuth {
+			if err := s.Operate(ctx, proto, ch); err != nil {
+				break
+			}
+		}
+
 		ch.Ring.SetAdv()
 		ch.Signal()
 	}
