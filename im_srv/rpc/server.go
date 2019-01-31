@@ -27,4 +27,6 @@ func (s *Server) PushMsg(ctx context.Context, req *grpc.PushMsgReq, reply *grpc.
 
 		channel.Push(req.Proto)
 	}
+
+	return nil
 }

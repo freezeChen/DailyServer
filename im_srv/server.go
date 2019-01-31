@@ -30,7 +30,13 @@ func (s *Server) Online(proto *grpc.Proto, ch *Channel) {
 	s.bucket.Online(proto.Id, ch)
 }
 
-func (srv *Server) Connect(ctx context.Context, id int32) (int32,error) {
+func (srv *Server) Connect(ctx context.Context, id int32) (int32, error) {
 	reply, err := srv.logicService.Check(ctx, &grpc.CheckReq{Id: id})
-	return reply.Key,err
+	return reply.Key, err
+}
+
+//处理接收的消息
+func (srv *Server) Operate(ctx context.Context, proto *grpc.Proto, ch *Channel) error {
+	_, err := srv.logicService.Receive(ctx, &grpc.ReceiveReq{Proto: proto})
+	return err
 }

@@ -14,6 +14,11 @@ import (
 
 type LogicHandler struct{}
 
+func (LogicHandler) Receive(ctx context.Context, req *grpc.ReceiveReq, reply *grpc.ReceiveReply) error {
+
+	panic("implement me")
+}
+
 func (LogicHandler) Check(ctx context.Context, req *grpc.CheckReq, reply *grpc.CheckReply) error {
 	user, err := models.GetUserByID(int64(req.Id))
 	if err != nil {

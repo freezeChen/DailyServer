@@ -27,6 +27,7 @@ var _ server.Option
 
 type LogicService interface {
 	Check(ctx context.Context, in *CheckReq, opts ...client.CallOption) (*CheckReply, error)
+	Receive(ctx context.Context, in *ReceiveReq, opts ...client.CallOption) (*ReceiveReply, error)
 }
 
 type logicService struct {
@@ -57,15 +58,27 @@ func (c *logicService) Check(ctx context.Context, in *CheckReq, opts ...client.C
 	return out, nil
 }
 
+func (c *logicService) Receive(ctx context.Context, in *ReceiveReq, opts ...client.CallOption) (*ReceiveReply, error) {
+	req := c.c.NewRequest(c.name, "LogicService.Receive", in)
+	out := new(ReceiveReply)
+	err := c.c.Call(ctx, req, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // Server API for LogicService service
 
 type LogicServiceHandler interface {
 	Check(context.Context, *CheckReq, *CheckReply) error
+	Receive(context.Context, *ReceiveReq, *ReceiveReply) error
 }
 
 func RegisterLogicServiceHandler(s server.Server, hdlr LogicServiceHandler, opts ...server.HandlerOption) error {
 	type logicService interface {
 		Check(ctx context.Context, in *CheckReq, out *CheckReply) error
+		Receive(ctx context.Context, in *ReceiveReq, out *ReceiveReply) error
 	}
 	type LogicService struct {
 		logicService
@@ -80,4 +93,8 @@ type logicServiceHandler struct {
 
 func (h *logicServiceHandler) Check(ctx context.Context, in *CheckReq, out *CheckReply) error {
 	return h.LogicServiceHandler.Check(ctx, in, out)
+}
+
+func (h *logicServiceHandler) Receive(ctx context.Context, in *ReceiveReq, out *ReceiveReply) error {
+	return h.LogicServiceHandler.Receive(ctx, in, out)
 }
