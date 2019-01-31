@@ -19,3 +19,6 @@ log
 module_im/module_im
 go.sum
 .DS_Store
+/cmd/im/im
+client/client
+job_srv/
