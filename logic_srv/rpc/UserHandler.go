@@ -7,6 +7,9 @@
 package rpc
 
 import (
+	"DailyServer/commons/glog"
+	"DailyServer/commons/gredis"
+	"DailyServer/commons/util"
 	"DailyServer/grpc"
 	"DailyServer/logic_srv/models"
 	"context"
@@ -16,7 +19,23 @@ type LogicHandler struct{}
 
 func (LogicHandler) Receive(ctx context.Context, req *grpc.ReceiveReq, reply *grpc.ReceiveReply) error {
 
-	panic("implement me")
+	switch req.Proto.Opr {
+	case grpc.OpSendMsg:
+		var msg models.Message
+		msg.Uid = util.ToInt64(req.Proto.Id)
+		msg.Rid = util.ToInt64(req.Proto.Toid)
+		msg.Msg = string(req.Proto.Body)
+		msg.Type = 1
+
+		err := models.InsertMsg(&msg)
+		if err != nil {
+			glog.Infof("Failed to insert msg:%s", err)
+			return err
+		}
+
+	}
+
+	return nil
 }
 
 func (LogicHandler) Check(ctx context.Context, req *grpc.CheckReq, reply *grpc.CheckReply) error {
@@ -24,6 +43,7 @@ func (LogicHandler) Check(ctx context.Context, req *grpc.CheckReq, reply *grpc.C
 	if err != nil {
 		return err
 	}
-	reply.Key = int32(user.Id + 1)
+	gredis.Set()
+	reply.Key = int32(user.Id)
 	return nil
 }

@@ -19,11 +19,13 @@ import (
 
 func main() {
 	var server *im.Server
+	//labelSelector := label.NewSelector()
 
 	microService := micro.NewService(
 		micro.Name(constant.MICRO_IM_SRV),
 		micro.RegisterTTL(constant.MICRO_TTL),
 		micro.RegisterInterval(constant.MICRO_Interval),
+
 	)
 	microService.Init(
 		micro.Action(func(context *cli.Context) {
@@ -41,8 +43,6 @@ func main() {
 		glog.Painc(err)
 	}
 
-
-
 	logicService := grpc.NewLogicService(constant.MICRO_LOGIC_SRV, microService.Client())
 
 	server = im.NewServer(logicService)
@@ -52,14 +52,6 @@ func main() {
 	}
 
 	microService.Run()
-	//if err := im.InitRPC(); err != nil {
-	//	glog.Painc(err)
-	//}
-
-	//glog.Debug("im RPC is running...")
-	////glog.Debug("logic server is running ...")
-	//http.HandleFunc("/ws", im.InitWebSocket)
-	//http.ListenAndServe(":8888", nil)
 
 	im.InitSignal()
 }
