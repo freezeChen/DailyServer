@@ -12,11 +12,17 @@ import (
 	"DailyServer/lib"
 	"bufio"
 	"encoding/json"
+	"flag"
 	"fmt"
 	"net"
 )
 
+var id = flag.Int64("id", 0, "help message.")
+var toid = flag.Int64("tid", 0, "help message.")
+var mm = flag.String("m", "", "help message.")
+
 func main() {
+	flag.Parse()
 
 	glog.InitLogger()
 
@@ -36,29 +42,30 @@ func main() {
 				panic(err)
 			}
 			var info lib.Info
-
+			glog.Infof("proto:%+v", rmsg)
 			json.Unmarshal(rmsg.Body, &info)
 
-			fmt.Printf("info:%+v", info)
+			glog.Infof("receive im info:%+v", info)
 
 		}
 	}()
 
 	msg := new(grpc.Proto)
 	msg.Ver = 1
+	msg.Id = int32(*id)
 	msg.Opr = grpc.OpAuth
-	msg.Body = []byte("5")
 
 	err = msg.WriteTCP(writer)
 	if err != nil {
 		panic(err)
 	}
 
+	msg.Opr = grpc.OpSendMsg
 
 	info := new(lib.Info)
-	info.Id = 5
-	info.Sid = 5
-	info.Msg = "hello i am client"
+	info.Id = int32(*id)
+	info.Rid = int32(*toid)
+	info.Msg = *mm
 
 	bytes, _ := json.Marshal(info)
 
@@ -69,9 +76,5 @@ func main() {
 		panic(err)
 	}
 
-
-
-	select {
-
-	}
+	select {}
 }

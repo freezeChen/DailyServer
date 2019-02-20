@@ -50,6 +50,7 @@ require (
 	github.com/go-xorm/xorm v0.7.1
 	github.com/gocql/gocql v0.0.0-20190126123547-8516aabb0f99 // indirect
 	github.com/gogo/googleapis v1.1.0 // indirect
+	github.com/gogo/protobuf v1.1.1
 	github.com/golang/protobuf v1.2.0
 	github.com/google/wire v0.2.1 // indirect
 	github.com/googleapis/gax-go v2.0.2+incompatible // indirect

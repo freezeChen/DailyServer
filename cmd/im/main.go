@@ -11,10 +11,9 @@ import (
 	"DailyServer/constant"
 	"DailyServer/grpc"
 	"DailyServer/im_srv"
+	"DailyServer/im_srv/rpc"
 	"github.com/micro/cli"
 	"github.com/micro/go-micro"
-	"github.com/micro/go-micro/broker"
-	"github.com/micro/go-plugins/broker/kafka"
 )
 
 func main() {
@@ -33,15 +32,6 @@ func main() {
 			im.InitIMConfig()
 		}))
 
-	micro.Broker(kafka.NewBroker(func(options *broker.Options) {
-		options.Addrs = []string{"test1:8092"}
-	}))
-
-	broker.Init()
-
-	if err := broker.Connect(); err != nil {
-		glog.Painc(err)
-	}
 
 	logicService := grpc.NewLogicService(constant.MICRO_LOGIC_SRV, microService.Client())
 
@@ -51,7 +41,12 @@ func main() {
 		glog.Painc(err)
 	}
 
-	microService.Run()
+	if err := grpc.RegisterIMServiceHandler(microService.Server(), rpc.NewImServer(server)); err != nil {
+		glog.Painc(err)
+	}
 
-	im.InitSignal()
+	if err := microService.Run(); err != nil {
+		glog.Painc(err)
+	}
+
 }

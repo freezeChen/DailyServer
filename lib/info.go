@@ -7,7 +7,7 @@
 package lib
 
 type Info struct {
-	Id  int32  `json:"id"`
-	Sid int32  `json:"sid"`
+	Id  int32  `json:"id"`  //发送者id
+	Rid int32  `json:"rid"` //接受者id
 	Msg string `json:"msg"`
 }

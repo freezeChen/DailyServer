@@ -7,9 +7,11 @@
 package rpc
 
 import (
-	"DailyServer/im_srv"
+	"DailyServer/commons/glog"
 	"DailyServer/grpc"
+	"DailyServer/im_srv"
 	"context"
+	"github.com/micro/go-micro/errors"
 )
 
 type Server struct {
@@ -22,10 +24,15 @@ func NewImServer(srv *im.Server) *Server {
 	return &server
 }
 
-func (s *Server) PushMsg(ctx context.Context, req *grpc.PushMsgReq, reply *grpc.PushMsgReply) error {
-	if channel := s.srv.Channel(req.Key); channel != nil {
+func (s Server) PushMsg(ctx context.Context, req *grpc.PushMsgReq, reply *grpc.PushMsgReply) error {
+	glog.Debug("push msg",req)
+	if channel := s.srv.Channel(req.Proto.Id); channel != nil {
 
-		channel.Push(req.Proto)
+
+		err := channel.Push(req.Proto)
+		return err
+	} else {
+		return errors.New("", "channel is not online", 200)
 	}
 
 	return nil

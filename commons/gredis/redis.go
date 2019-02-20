@@ -2,7 +2,7 @@ package gredis
 
 import (
 	"DailyServer/commons/config"
-	"encoding/json"
+	"DailyServer/commons/glog"
 	"github.com/garyburd/redigo/redis"
 	"time"
 )
@@ -11,20 +11,21 @@ var RedisConn *redis.Pool
 
 func InitRedis() error {
 	RedisConn = &redis.Pool{
-		MaxIdle:     30,
-		MaxActive:   30,
+		MaxIdle:     1024,
+		MaxActive:   60000,
 		IdleTimeout: 200,
 		Dial: func() (redis.Conn, error) {
-			c, err := redis.Dial("tcp", config.DefaultConfig.RedisConn)
+			c, err := redis.Dial("tcp", config.DefaultConfig.RedisConn,
+				redis.DialPassword(config.DefaultConfig.Redispwd),
+				redis.DialConnectTimeout(200*time.Millisecond),
+				redis.DialReadTimeout(500*time.Millisecond),
+				redis.DialWriteTimeout(500*time.Millisecond),
+			)
+
 			if err != nil {
 				return nil, err
 			}
-			if config.DefaultConfig.Redispwd != "" {
-				if _, err := c.Do("AUTH", config.DefaultConfig.Redispwd); err != nil {
-					c.Close()
-					return nil, err
-				}
-			}
+
 			return c, err
 		},
 		TestOnBorrow: func(c redis.Conn, t time.Time) error {
@@ -40,12 +41,9 @@ func Set(key string, data interface{}, time int) error {
 	conn := RedisConn.Get()
 	defer conn.Close()
 
-	value, err := json.Marshal(data)
-	if err != nil {
-		return err
-	}
 
-	_, err = conn.Do("SET", key, value)
+
+	_, err := conn.Do("SET", key, data)
 	if err != nil {
 		return err
 	}
@@ -87,6 +85,18 @@ func Delete(key string) (bool, error) {
 	defer conn.Close()
 
 	return redis.Bool(conn.Do("DEL", key))
+}
+
+func HSet(key string, item string, value string) error {
+	conn := RedisConn.Get()
+	defer conn.Close()
+
+	if err := conn.Send("HSET", key, item, value); err != nil {
+		glog.Errorf("conn HSET (%s %s %s)", key, item, value)
+		return err
+	}
+
+	return nil
 }
 
 func LikeDeletes(key string) error {

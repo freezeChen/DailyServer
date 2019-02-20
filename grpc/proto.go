@@ -117,7 +117,6 @@ func (p *Proto) ReadTCP(r *bufio.Reader) (err error) {
 
 
 	n, err := r.Read(headBuf)
-	glog.Info("head", headBuf, len(headBuf))
 	if n != int(RawHeaderSize) {
 		err = ErrMsgHeaderLen
 		return
@@ -153,7 +152,6 @@ func (p *Proto) WriteTCP(w *bufio.Writer) (err error) {
 	)
 	packLen = uint32(RawHeaderSize) + uint32(len(p.Body))
 
-	glog.Info(packLen, uint16(RawHeaderSize), uint16(p.Ver), uint32(p.Opr))
 	binary.Write(w, binary.BigEndian, packLen)
 	binary.Write(w, binary.BigEndian, uint16(RawHeaderSize))
 	binary.Write(w, binary.BigEndian, uint16(p.Ver))

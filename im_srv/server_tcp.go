@@ -138,7 +138,7 @@ func (s *Server) dispatchTCP(conn *net.TCPConn, ch *Channel) {
 				goto field
 			}
 
-			if channel := s.Channel(info.Sid); channel != nil {
+			if channel := s.Channel(info.Rid); channel != nil {
 				err = channel.Push(msg)
 				if err != nil {
 					glog.Errorf("failed to push msg:%s", err)
