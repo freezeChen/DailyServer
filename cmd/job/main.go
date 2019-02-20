@@ -7,9 +7,10 @@
 package main
 
 import (
+	"DailyServer/cmd/job/handler"
 	"DailyServer/commons/glog"
 	"DailyServer/constant"
-	"fmt"
+	"DailyServer/grpc"
 	"github.com/micro/cli"
 	"github.com/micro/go-micro"
 	"github.com/micro/go-micro/broker"
@@ -33,7 +34,7 @@ func main() {
 
 	micro.Broker(kafka.NewBroker(func(options *broker.Options) {
 		options.Addrs = []string{
-			"test1:9092",
+			"www.frozens.vip:9092",
 		}
 	}))
 	broker.Init()
@@ -42,18 +43,11 @@ func main() {
 		glog.Painc(err)
 	}
 
-	_, err := broker.Subscribe(constant.JOB_TOPIC_SINGLECHAT, func(pub broker.Publication) error {
-		message := pub.Message()
+	imService := grpc.NewIMService(constant.MICRO_IM_SRV, microService.Client())
 
-		fmt.Print(string(message.Body))
+	handler.NewJobHandler(imService).Start()
 
-		return nil
-	})
-	if err != nil {
-		glog.Painc(err)
-	}
-
-	if err = microService.Run(); err != nil {
+	if err := microService.Run(); err != nil {
 		glog.Painc(err)
 	}
 

@@ -7,9 +7,13 @@ import (
 	"DailyServer/commons/gredis"
 	"DailyServer/constant"
 	"DailyServer/grpc"
+	"DailyServer/logic_srv/publish"
 	"DailyServer/logic_srv/rpc"
 	"github.com/micro/cli"
 	"github.com/micro/go-micro"
+	"github.com/micro/go-micro/broker"
+	"github.com/micro/go-plugins/broker/kafka"
+	_ "github.com/micro/go-plugins/broker/kafka"
 	"time"
 )
 
@@ -31,11 +35,29 @@ func main() {
 			config.SetConf()
 			glog.InitLogger()
 			db.InitDb()
-			gredis.InitRedis()
+			if err := gredis.InitRedis(); err != nil {
+				glog.Painc(err)
+			}
+
 		}),
 	)
 
-	err := grpc.RegisterLogicServiceHandler(microService.Server(), new(rpc.LogicHandler))
+	micro.Broker(kafka.NewBroker(func(o *broker.Options) {
+		o.Addrs = []string{
+			"www.frozens.vip:9092",
+		}
+	}))
+
+	broker.Init()
+
+	if err := broker.Connect(); err != nil {
+		glog.Painc("Failed to connect kafka:", err)
+		return
+	}
+
+	kafkaPub := new(publish.KafkaPub)
+	logicHandler := rpc.NewLogicHandler(kafkaPub)
+	err := grpc.RegisterLogicServiceHandler(microService.Server(), logicHandler)
 	if err != nil {
 		glog.Sugar().Panicf("RegisterLogicService is error %s", err.Error())
 	}

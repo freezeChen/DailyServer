@@ -39,7 +39,7 @@ func InitLogger() {
 		EncodeCaller:   zapcore.ShortCallerEncoder,
 	})
 
-	core := zapcore.NewCore(encoder, syncers, zap.InfoLevel)
+	core := zapcore.NewCore(encoder, syncers, zap.DebugLevel)
 
 	gLogger = zap.New(core, zap.AddCaller(), zap.AddCallerSkip(1))
 }
