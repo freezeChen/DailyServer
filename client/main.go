@@ -23,10 +23,9 @@ var mm = flag.String("m", "", "help message.")
 
 func main() {
 	flag.Parse()
-
 	glog.InitLogger()
 
-	addr, _ := net.ResolveTCPAddr("tcp", "127.0.0.1:8020")
+	addr, _ := net.ResolveTCPAddr("tcp", "47.106.137.3:8020")
 	conn, err := net.DialTCP("tcp", nil, addr)
 	if err != nil {
 		fmt.Println(err)
