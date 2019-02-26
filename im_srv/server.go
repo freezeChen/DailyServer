@@ -32,6 +32,9 @@ func (s *Server) Online(proto *grpc.Proto, ch *Channel) {
 
 func (srv *Server) Connect(ctx context.Context, id int32) (int32, error) {
 	reply, err := srv.logicService.Check(ctx, &grpc.CheckReq{Id: id})
+	if err != nil {
+		return 0,err
+	}
 	return reply.Key, err
 }
 

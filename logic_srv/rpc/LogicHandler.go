@@ -56,13 +56,12 @@ func (logic LogicHandler) Receive(ctx context.Context, req *grpc.ReceiveReq, rep
 				return err
 			}
 		}
-
 	}
 
 	return nil
 }
 
-func (LogicHandler) Check(ctx context.Context, req *grpc.CheckReq, reply *grpc.CheckReply) error {
+func (srv LogicHandler) Check(ctx context.Context, req *grpc.CheckReq, reply *grpc.CheckReply) error {
 	user, err := models.GetUserByID(int64(req.Id))
 	if err != nil {
 		return err
@@ -71,6 +70,10 @@ func (LogicHandler) Check(ctx context.Context, req *grpc.CheckReq, reply *grpc.C
 	err = cache.SaveOnlineUser(reply.Key)
 	if err != nil {
 		glog.Error("save user", err)
+		return err
 	}
-	return nil
+
+	err = srv.kafkaPub.AuthSuccess(util.ToString(req.Id))
+
+	return err
 }

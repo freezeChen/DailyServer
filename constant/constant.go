@@ -16,4 +16,5 @@ const (
 	MICRO_Interval  = 20 * time.Second
 
 	JOB_TOPIC_SINGLECHAT = "job_singleChat"
+	Job_Topic_AuthReply  = "job_authReply"
 )
