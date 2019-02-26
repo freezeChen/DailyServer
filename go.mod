@@ -121,6 +121,7 @@ require (
 	gopkg.in/ini.v1 v1.39.3 // indirect
 	gopkg.in/ory-am/dockertest.v2 v2.2.3 // indirect
 	gopkg.in/square/go-jose.v2 v2.2.2 // indirect
+	k8s.io/client-go v10.0.0+incompatible // indirect
 	launchpad.net/gocheck v0.0.0-20140225173054-000000000087 // indirect
 	layeh.com/radius v0.0.0-20190118135028-0f678f039617 // indirect
 )
