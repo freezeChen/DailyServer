@@ -25,7 +25,6 @@ import (
 // @license.name MIT
 // @license.url https://github.com/EDDYCJY/go-gin-example/blob/master/LICENSE
 func main() {
-
 	microService := micro.NewService(micro.Name(constant.MICRO_LOGIC_SRV),
 		micro.RegisterTTL(25*time.Second),
 		micro.RegisterInterval(20*time.Second),
@@ -38,7 +37,6 @@ func main() {
 			if err := gredis.InitRedis(); err != nil {
 				glog.Painc(err)
 			}
-
 		}),
 	)
 

@@ -10,7 +10,7 @@ type User struct {
 
 func GetUserByID(id int64) (*User, error) {
 	var user User
-	_, err := engine().ID(id).Get(&user)
+	_, err := Engine().ID(id).Get(&user)
 	if err != nil {
 		return nil, err
 	}
@@ -19,6 +19,6 @@ func GetUserByID(id int64) (*User, error) {
 
 func GetUserList() ([]*User, error) {
 	var users []*User
-	err := engine().Find(&users)
+	err := Engine().Find(&users)
 	return users, err
 }

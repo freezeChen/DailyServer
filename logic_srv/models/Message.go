@@ -16,7 +16,7 @@ func (Message) TableName() string {
 }
 
 func InsertMsg(msg *Message) error {
-	insertOne, err := engine().InsertOne(msg)
+	insertOne, err := Engine().InsertOne(msg)
 	if err != nil {
 		return err
 	}
