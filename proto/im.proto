@@ -1,0 +1,25 @@
+syntax = "proto3";
+package proto;
+
+
+service IMService {
+	rpc PushMsg (PushMsgReq) returns (PushMsgReply) {
+	}
+}
+
+message Proto {
+	int32 ver = 1;
+	int32 opr = 2;
+	int32 id = 3;
+	int32 toid = 4;
+	bytes body = 5;
+}
+
+message PushMsgReq {
+	int32 Key = 1;
+	Proto proto = 2;
+}
+
+
+message PushMsgReply {
+}
