@@ -53,3 +53,8 @@ func Ping() error {
 func Close() {
 	engine.Close()
 }
+
+func Engine() *xorm.Engine {
+	group, _ := NewEngine()
+	return group
+}

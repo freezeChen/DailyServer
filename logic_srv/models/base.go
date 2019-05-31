@@ -1,12 +1,9 @@
 package models
 
 import (
-	"DailyServer/commons/config"
 	"DailyServer/commons/db"
 	"DailyServer/commons/glog"
-	"DailyServer/commons/util"
 	"errors"
-	"fmt"
 	"github.com/gin-gonic/gin"
 	"github.com/go-xorm/xorm"
 	"github.com/json-iterator/go"
@@ -29,11 +26,10 @@ const (
 type JsonResult struct {
 	Code int         `json:"code"`
 	Msg  string      `json:"msg"`
-	Data interface{} `json:"data"`
+	Data interface{} `json:"data,omitempty"`
 }
 
-
-func Response(self *JsonResult, ctx *gin.Context) {
+func (self *JsonResult) Response(ctx *gin.Context) {
 	var (
 		params interface{}
 	)
@@ -47,25 +43,22 @@ func Response(self *JsonResult, ctx *gin.Context) {
 	}
 
 	//获取错误码对应文字
-	msg := config.Cfg.MustValue("error", "msg_"+util.ToString(self.Code), "")
 	if self.Code == 0 {
+		self.Msg = "success"
 		glog.APIInfo(ctx.Request.URL.Path, params)
 	} else {
+		self.Msg = "操作失败"
 		glog.APIWarn(ctx.Request.URL.Path, self.Msg, params)
-		fmt.Println("错误:", ctx.Request.URL.Path, self.Msg, params)
 	}
-
-	self.Msg = msg
 
 	json := jsoniter.ConfigCompatibleWithStandardLibrary
 
 	str, _ := json.Marshal(self)
 
 	ctx.Data(http.StatusOK, "application/json; charset=utf-8", str)
-	//ctx.JSON(http.StatusOK, str)
 }
 
-func engine() *xorm.Engine {
+func Engine() *xorm.Engine {
 	group, _ := db.NewEngine()
 	return group
 }

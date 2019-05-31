@@ -17,9 +17,15 @@ upload:linuxBuild
 	ssh root@47.106.137.3 "cd /root/daily;./start.sh"
 
 test:macBuild
-	-kill -9 $(lsof -t -i:8020)
+	-kill -9 $$(lsof -t -i:8020)
 	-kill -9 ` ps -a |grep logic|awk '{print $1}'`
 	-kill -9 ` ps -a |grep job|awk '{print $1}'`
 	./cmd/im/im &
 	./cmd/job/job &
 	./cmd/logic/logic &
+
+stop:
+	-kill -9 $$(lsof -t -i:8020)
+	-kill -9 ` ps -a |grep logic|awk '{print $1}'`
+	-kill -9 ` ps -a |grep job|awk '{print $1}'`
+
