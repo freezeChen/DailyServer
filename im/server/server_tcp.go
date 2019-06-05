@@ -10,21 +10,26 @@ import (
 	"bufio"
 	"context"
 	"dailyserver/im/conf"
+
 	"dailyserver/im/model"
 	"dailyserver/proto"
+
 	"github.com/freezeChen/studio-library/zlog"
 	"net"
 	"runtime"
 )
 
 func InitTCP(server *Server, c *conf.Config) (err error) {
+
 	addr, err := net.ResolveTCPAddr("tcp", c.TCPPort)
 	if err != nil {
+		zlog.Errorf("net.ResolveTCPAddr error(%s)", err)
 		return
 	}
 
 	listener, err := net.ListenTCP("tcp", addr)
 	if err != nil {
+		zlog.Errorf("net.listenTCP error(%s)", err)
 		return
 	}
 
@@ -36,6 +41,7 @@ func InitTCP(server *Server, c *conf.Config) (err error) {
 }
 
 func acceptTCP(server *Server, c *conf.Config, listen *net.TCPListener) {
+
 	var (
 		conn *net.TCPConn
 		err  error
@@ -44,25 +50,31 @@ func acceptTCP(server *Server, c *conf.Config, listen *net.TCPListener) {
 	for {
 		if conn, err = listen.AcceptTCP(); err != nil {
 			zlog.Errorf("listen.AcceptTcp error(%s)", err)
-			return
-		}
+			for {
+				//等待连接
+				if conn, err = listen.AcceptTCP(); err != nil {
+					zlog.Errorf("listen.acceptTCP error(%s)", err)
+					return
+				}
 
-		if err := conn.SetKeepAlive(c.TCPKeepalive); err != nil {
-			zlog.Errorf("conn setKeepAlive error(%s)", err)
-			return
-		}
+				if err := conn.SetKeepAlive(c.TCPKeepalive); err != nil {
+					zlog.Errorf("conn setKeepAlive error(%s)", err)
+					return
+				}
 
-		if err := conn.SetReadBuffer(c.TCPReadBuffer); err != nil {
-			zlog.Errorf("conn setReadBuffer error(%s)", err)
-			return
-		}
+				if err := conn.SetReadBuffer(c.TCPReadBuffer); err != nil {
+					zlog.Errorf("conn setReadBuffer error(%s)", err)
+					return
+				}
 
-		if err := conn.SetWriteBuffer(c.TCPWriteBuffer); err != nil {
-			zlog.Errorf("conn setWriterBuffer error(%s)", err)
-			return
-		}
+				if err := conn.SetWriteBuffer(c.TCPWriteBuffer); err != nil {
+					zlog.Errorf("conn setWriterBuffer error(%s)", err)
+					return
+				}
 
-		go server.serverTCP(c, conn)
+				go server.serverTCP(c, conn)
+			}
+		}
 	}
 }
 
@@ -84,6 +96,10 @@ func (server *Server) serverTCP(c *conf.Config, conn *net.TCPConn) {
 
 	if msg, err = ch.Ring.Set(); err == nil {
 		server.AuthTCP(ctx, msg, ch)
+	}
+	if err := conn.SetWriteBuffer(c.TCPWriteBuffer); err != nil {
+		zlog.Errorf("conn setWriteBuffer error(%s)", err)
+		return
 	}
 
 }

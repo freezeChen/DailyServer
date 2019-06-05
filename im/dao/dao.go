@@ -1,3 +1,4 @@
+
 /*
    @Time : 2019-05-31 11:39:47
    @Author :
@@ -8,7 +9,6 @@ package dao
 
 import (
 	"dailyserver/im/conf"
-	"fmt"
 	"github.com/freezeChen/studio-library/database/mysql"
 	"github.com/freezeChen/studio-library/redis"
 	_ "github.com/go-sql-driver/mysql"
@@ -25,6 +25,6 @@ func New(c *conf.Config) (dao *Dao) {
 		Db:    mysql.New(c.Mysql),
 		Redis: redis.New(c.Redis),
 	}
-	fmt.Println("11")
 	return
 }
+

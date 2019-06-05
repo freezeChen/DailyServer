@@ -17,3 +17,6 @@
 # vendor/
 
 .idea/
+
+im/cmd/cmd
+go.sum
