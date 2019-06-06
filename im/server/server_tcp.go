@@ -10,16 +10,19 @@ import (
 	"bufio"
 	"context"
 	"dailyserver/im/conf"
-
 	"dailyserver/im/model"
+	"dailyserver/lib/time"
 	"dailyserver/proto"
+	"math"
+	"strconv"
+	time2 "time"
 
 	"github.com/freezeChen/studio-library/zlog"
 	"net"
 	"runtime"
 )
 
-func InitTCP(server *Server, c *conf.Config) (err error) {
+func (server *Server) InitTCP(c *conf.Config) (err error) {
 
 	addr, err := net.ResolveTCPAddr("tcp", c.TCPPort)
 	if err != nil {
@@ -34,17 +37,18 @@ func InitTCP(server *Server, c *conf.Config) (err error) {
 	}
 
 	for i := 0; i < runtime.NumCPU(); i++ {
-		go acceptTCP(server, c, listener)
+		go server.acceptTCP(c, listener)
 	}
 
 	return
 }
 
-func acceptTCP(server *Server, c *conf.Config, listen *net.TCPListener) {
+func (server *Server) acceptTCP(c *conf.Config, listen *net.TCPListener) {
 
 	var (
 		conn *net.TCPConn
 		err  error
+		r    int
 	)
 
 	for {
@@ -72,18 +76,24 @@ func acceptTCP(server *Server, c *conf.Config, listen *net.TCPListener) {
 					return
 				}
 
-				go server.serverTCP(c, conn)
+				go server.serverTCP(c, conn, r)
+				if r++; r == math.MaxInt32 {
+					r = 0
+				}
 			}
 		}
 	}
 }
 
-func (server *Server) serverTCP(c *conf.Config, conn *net.TCPConn) {
+func (server *Server) serverTCP(c *conf.Config, conn *net.TCPConn, r int) {
 	var (
 		ch  *model.Channel
 		msg *proto.Proto
 		err error
 		ctx context.Context
+
+		timer     = server.Round.Timer(r)
+		timerData *time.TimerData
 	)
 
 	ch = model.NewChannel()
@@ -94,12 +104,39 @@ func (server *Server) serverTCP(c *conf.Config, conn *net.TCPConn) {
 	ctx, cancel := context.WithCancel(context.Background())
 	defer cancel()
 
+	timerData = timer.Add(time2.Duration(_HandshakeTimeout*time2.Second), func() {
+		conn.Close()
+	})
+
 	if msg, err = ch.Ring.Set(); err == nil {
-		server.AuthTCP(ctx, msg, ch)
-	}
-	if err := conn.SetWriteBuffer(c.TCPWriteBuffer); err != nil {
-		zlog.Errorf("conn setWriteBuffer error(%s)", err)
-		return
+		if ch.Id, err = server.AuthTCP(ctx, msg, ch); err == nil {
+			zlog.Debugf("tcp connect id:%d proto: %+v", ch.Id, msg)
+		}
+
+		if err != nil {
+			conn.Close()
+			timer.Del(timerData)
+			zlog.Errorf("id:%d handshake error(%v)", err)
+			return
+		}
+
+		timerData.Key = strconv.FormatInt(ch.Id, 10)
+		timer.Set(timerData, time2.Duration(60*time2.Second))
+		go server.dispatchTCP(conn, &ch.Writer, ch)
 	}
 
+}
+
+func (s *Server) dispatchTCP(conn *net.TCPConn, wr *bufio.Writer, ch *model.Channel) {
+	for {
+		p := ch.Ready()
+		switch p {
+		case proto.ProtoFinish:
+			goto failed
+		case proto.ProtoReady:
+
+		}
+	}
+
+failed:
 }

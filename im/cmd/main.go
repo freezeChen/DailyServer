@@ -1,4 +1,3 @@
-
 /*
    @Time : 2019-05-31 11:39:47
    @Author :
@@ -13,7 +12,6 @@ import (
 	"dailyserver/im/service"
 	"dailyserver/proto"
 	"github.com/freezeChen/studio-library/zlog"
-	"github.com/micro/cli"
 	"github.com/micro/go-micro"
 	"time"
 )
@@ -26,19 +24,18 @@ func main() {
 
 	zlog.InitLogger(cfg.Log)
 
-	s := service.New(cfg)
-
 	svc := micro.NewService(
 		micro.Name("go.micro.srv.hello"),
 		micro.Address(":8081"),
 		micro.RegisterTTL(30*time.Second),
 		micro.RegisterInterval(20*time.Second),
 	)
-	svc.Init(micro.Action(func(context *cli.Context) {
+	svc.Init()
 
-	}))
+	s := service.New(cfg)
+	srv := server.New(s)
 
-	if err := server.InitTCP(s, cfg); err != nil {
+	if err := srv.InitTCP(cfg); err != nil {
 		panic("initTCP error:" + err.Error())
 		return
 	}
@@ -53,4 +50,3 @@ func main() {
 		return
 	}
 }
-

@@ -4,8 +4,6 @@ import (
 	"bufio"
 	"encoding/binary"
 	"errors"
-	"fmt"
-	"github.com/gorilla/websocket"
 )
 
 const (
@@ -154,7 +152,7 @@ func (p *Proto) WriteTCP(w *bufio.Writer) (err error) {
 	return
 }
 
-func (p *Proto) ReadWebSocket(ws *websocket.Conn) (err error) {
+/*func (p *Proto) ReadWebSocket(ws *websocket.Conn) (err error) {
 	var (
 		bodyLen   uint32
 		headerLen uint16
@@ -212,3 +210,4 @@ func (p *Proto) WriteWebSocket(ws *websocket.Conn) (err error) {
 	err = ws.WriteMessage(websocket.BinaryMessage, buf)
 	return
 }
+*/

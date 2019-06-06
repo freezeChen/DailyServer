@@ -5,14 +5,14 @@ go 1.12
 require (
 	github.com/armon/circbuf v0.0.0-20190214190532-5111143e8da2 // indirect
 
-	github.com/freezeChen/studio-library v0.0.4
+	github.com/freezeChen/studio-library v0.0.5
 	github.com/go-sql-driver/mysql v1.4.1
 	github.com/go-xorm/xorm v0.7.1
 	github.com/gogo/protobuf v1.2.1
+	github.com/golang/glog v0.0.0-20160126235308-23def4e6c14b
 	github.com/golang/protobuf v1.3.1
 
 	github.com/mattn/go-colorable v0.1.1 // indirect
-	github.com/micro/cli v0.1.0
 
 	github.com/micro/go-config v1.0.0
 	github.com/micro/go-micro v1.1.0

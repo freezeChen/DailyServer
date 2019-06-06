@@ -1,7 +1,6 @@
 package model
 
 import (
-	"DailyServer/grpc"
 	"bufio"
 	"dailyserver/proto"
 	"net"
@@ -35,7 +34,6 @@ func (c *Channel) Push(msg *proto.Proto) {
 func (c *Channel) Ready() *proto.Proto {
 	return <-c.msg
 }
-
 
 func (c *Channel) Signal() {
 	c.msg <- proto.ProtoReady

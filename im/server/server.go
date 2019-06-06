@@ -13,14 +13,23 @@ import (
 	"dailyserver/proto"
 )
 
+const (
+	_HandshakeTimeout = 8
+)
+
 type Server struct {
+	Round *model.Round
+
 	svc *service.Service
 }
 
 func New(svc *service.Service) *Server {
-	return &Server{svc: svc}
+	return &Server{
+		Round: model.NewRound(),
+		svc:   svc,
+	}
 }
 
-func (s *Server) AuthTCP(ctx context.Context, proto *proto.Proto, ch *model.Channel) (err error) {
+func (server *Server) AuthTCP(ctx context.Context, proto *proto.Proto, ch *model.Channel) (id int64, err error) {
 	return
 }
