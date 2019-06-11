@@ -33,7 +33,7 @@ func (r *Ring) Get() (msg *proto.Proto, err error) {
 	return
 }
 
-func (r *Ring) getAdv() {
+func (r *Ring) GetAdv() {
 	r.rp++
 }
 

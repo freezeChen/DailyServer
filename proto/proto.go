@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"encoding/binary"
 	"errors"
+	"fmt"
 )
 
 const (
@@ -106,6 +107,7 @@ func (p *Proto) ReadTCP(r *bufio.Reader) (err error) {
 	//headBuf, err = r.Peek(RawHeaderSize)
 
 	n, err := r.Read(headBuf)
+	fmt.Println(n)
 	if n != int(RawHeaderSize) {
 		err = ErrMsgHeaderLen
 		return

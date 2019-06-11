@@ -16,12 +16,11 @@ redis:
   idleTimeout: "1ms"
 log:
   name: "im"
-  debug: true
   kafkaAddr: "127.0.0.1:9092"
   WriteKafka: false
-
+  debug: true
 kafka: "127.0.0.1:9092"
-TCPPort: ":8082"
+TCPPort: ":8020"
 WebSocketPort:  ":8030"
 TCPKeepalive: true
 TCPReadBuffer: 1024

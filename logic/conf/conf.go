@@ -1,3 +1,4 @@
+
 package conf
 
 import (
@@ -10,18 +11,13 @@ import (
 )
 
 type Config struct {
-	Name           string
-	Version        string
-	Env            string
-	TCPPort        string
-	WebSocketPort  string
-	TCPKeepalive   bool
-	TCPReadBuffer  int
-	TCPWriteBuffer int
-	Mysql          *mysql.Config
-	Redis          *redis.Config
-	Log            *zlog.Config
-	Kafka          string
+	Name    string
+	Version string
+	Env     string
+	Debug   bool
+	Log		*zlog.Config
+	Mysql   *mysql.Config
+	Redis   *redis.Config
 }
 
 func Init() (*Config, error) {
@@ -36,8 +32,6 @@ func Init() (*Config, error) {
 		return nil, err
 	}
 
-	Conf.Log.Name = Conf.Name
-	Conf.Log.KafkaAddr = Conf.Kafka
-
 	return Conf, nil
 }
+

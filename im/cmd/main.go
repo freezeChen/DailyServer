@@ -11,6 +11,7 @@ import (
 	"dailyserver/im/server"
 	"dailyserver/im/service"
 	"dailyserver/proto"
+	"fmt"
 	"github.com/freezeChen/studio-library/zlog"
 	"github.com/micro/go-micro"
 	"time"
@@ -21,11 +22,11 @@ func main() {
 	if err != nil {
 		panic("load config error:" + err.Error())
 	}
-
+	fmt.Println(cfg.Log.Name, cfg.Log.Debug, cfg.Log.WriteKafka)
 	zlog.InitLogger(cfg.Log)
 
 	svc := micro.NewService(
-		micro.Name("go.micro.srv.hello"),
+		micro.Name("go.micro.srv.im"),
 		micro.Address(":8081"),
 		micro.RegisterTTL(30*time.Second),
 		micro.RegisterInterval(20*time.Second),

@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package proto;
+import "base.proto";
+
+service Logic {
+	rpc Auth (AuthReq) returns (EmptyReply) {
+	}
+}
+
+
+message AuthReq {
+	int64 Id = 1;
+	string ServerId = 2;
+	string Password = 3;
+}
+
+message AuthReply {
+
+}

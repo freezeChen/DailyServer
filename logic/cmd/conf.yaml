@@ -1,0 +1,17 @@
+name: "logic"
+env: "dev"
+version: "v0.0.1"
+mysql:
+  source: "root:dailys@tcp(47.106.137.3:3306)/daily?timeout=5s&readTimeout=5s&writeTimeout=5s&parseTime=true&loc=Local&charset=utf8mb4"
+  active: 20
+  idle: 5
+redis:
+  addr: "127.0.0.1:6379"
+  auth: ""
+  active: 100
+  idle: 20
+  dialTimeout: "1ms"
+  readTimeout: "1ms"
+  writeTimeout: "1ms"
+  idleTimeout: "1ms"
+kafka: "127.0.0.1:9092"
