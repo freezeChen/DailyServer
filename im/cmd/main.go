@@ -11,7 +11,6 @@ import (
 	"dailyserver/im/server"
 	"dailyserver/im/service"
 	"dailyserver/proto"
-	"fmt"
 	"github.com/freezeChen/studio-library/zlog"
 	"github.com/micro/go-micro"
 	"time"
@@ -22,7 +21,7 @@ func main() {
 	if err != nil {
 		panic("load config error:" + err.Error())
 	}
-	fmt.Println(cfg.Log.Name, cfg.Log.Debug, cfg.Log.WriteKafka)
+
 	zlog.InitLogger(cfg.Log)
 
 	svc := micro.NewService(
@@ -34,7 +33,8 @@ func main() {
 	svc.Init()
 
 	s := service.New(cfg)
-	srv := server.New(s)
+	logicService := proto.NewLogicService("go.micro.srv.logic", svc.Client())
+	srv := server.New(s, logicService)
 
 	if err := srv.InitTCP(cfg); err != nil {
 		panic("initTCP error:" + err.Error())

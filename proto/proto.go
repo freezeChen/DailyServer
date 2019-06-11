@@ -116,7 +116,7 @@ func (p *Proto) ReadTCP(r *bufio.Reader) (err error) {
 	headerLen = binary.BigEndian.Uint16(headBuf[HeaderOffset:VerOffset])
 	p.Ver = int32(binary.BigEndian.Uint16(headBuf[VerOffset:OperationOffset]))
 	p.Opr = int32(binary.BigEndian.Uint32(headBuf[OperationOffset:SeqIdOffset]))
-	p.Id = int32(binary.BigEndian.Uint32(headBuf[SeqIdOffset:]))
+	p.Id = int64(binary.BigEndian.Uint32(headBuf[SeqIdOffset:]))
 
 	//glog.Info("proto:", p)
 

@@ -144,16 +144,17 @@ func (server *Server) serverTCP(c *conf.Config, conn *net.TCPConn, r int) {
 			ch.Ring.SetAdv()
 			ch.Signal()
 
-			timer.Del(timerData)
-			conn.Close()
-			ch.Close()
-
-			if err := server.DisConnect(ctx, ch.Id); err != nil {
-				zlog.Errorf("disConnect is error:(%v)", err)
-			}
 		}
 	} else {
 		zlog.Errorf("set error(%s)", err)
+	}
+
+	timer.Del(timerData)
+	conn.Close()
+	ch.Close()
+
+	if err := server.DisConnect(ctx, ch.Id); err != nil {
+		zlog.Errorf("disConnect is error:(%v)", err)
 	}
 }
 

@@ -110,7 +110,7 @@ var mReader *bufio.Reader
 func conn() {
 	var err error
 
-	conn, err := net.Dial("tcp", "127.0.0.1:8082")
+	conn, err := net.Dial("tcp", "127.0.0.1:8020")
 	//addr, _ := net.ResolveTCPAddr("tcp", "127.0.0.1:8082")
 	//tcpConn, err = net.DialTCP("tcp", nil, addr)
 	if err != nil {
@@ -143,21 +143,23 @@ func conn() {
 
 func login() {
 
-	//fmt.Scanln(&scan)
-	//i, _ := strconv.Atoi(scan)
-	//
-	//conn()
-
 	msg := new(proto.Proto)
 	msg.Ver = 1
-	msg.Id = int32(13)
+	msg.Id = 1
 	msg.Opr = proto.OpAuth
 
-	fmt.Println("w")
 	err := msg.WriteTCP(mWriter)
 	if err != nil {
 		panic(err)
 	}
+
+	msg.Ver = 1
+	msg.Id = 1
+	msg.Toid = 2
+	msg.Opr = proto.OpSendMsg
+	msg.Body = []byte("hello i am client")
+
+	msg.WriteTCP(mWriter)
 
 	select {}
 

@@ -19,4 +19,5 @@
 .idea/
 
 im/cmd/cmd
+logic/cmd/cmd
 go.sum

@@ -20,6 +20,5 @@ func New(c *conf.Config) (s *Service) {
 		dao: dao.New(c),
 	}
 
-	s.dao.Get()
 	return s
 }

@@ -9,6 +9,7 @@ package main
 import (
 	"dailyserver/logic/conf"
 	"dailyserver/logic/service"
+	"dailyserver/proto"
 	"github.com/micro/go-micro"
 	"time"
 )
@@ -20,13 +21,13 @@ func main() {
 	}
 	svc := micro.NewService(
 		micro.Name("go.micro.srv.logic"),
-		micro.Address(":8082"),
+		micro.Address(":8070"),
 		micro.RegisterTTL(30*time.Second),
 		micro.RegisterInterval(20*time.Second))
 
 	svc.Init()
-	 service.New(cfg)
-	//err = proto.RegisterHelloHandler(svc.Server(), s)
+	s := service.New(cfg)
+	err = proto.RegisterLogicHandler(svc.Server(), s)
 	if err := svc.Run(); err != nil {
 		return
 	}
