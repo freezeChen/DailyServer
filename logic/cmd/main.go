@@ -10,6 +10,7 @@ import (
 	"dailyserver/logic/conf"
 	"dailyserver/logic/service"
 	"dailyserver/proto"
+	"github.com/freezeChen/studio-library/zlog"
 	"github.com/micro/go-micro"
 	"time"
 )
@@ -19,6 +20,7 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
+	zlog.InitLogger(cfg.Log)
 	svc := micro.NewService(
 		micro.Name("go.micro.srv.logic"),
 		micro.Address(":8070"),

@@ -32,17 +32,17 @@ func main() {
 	)
 	svc.Init()
 
-	s := service.New(cfg)
 	logicService := proto.NewLogicService("go.micro.srv.logic", svc.Client())
-	srv := server.New(s, logicService)
+	srv := server.New(logicService)
+	s := service.New(cfg, srv)
 
-	if err := srv.InitTCP(cfg); err != nil {
-		panic("initTCP error:" + err.Error())
+	if err := proto.RegisterIMServiceHandler(svc.Server(), s); err != nil {
+		panic("RegisterIMServiceHandler is error:" + err.Error())
 		return
 	}
 
-	if err := proto.RegisterHelloHandler(svc.Server(), s); err != nil {
-		panic("register hello error:" + err.Error())
+	if err := srv.InitTCP(cfg); err != nil {
+		panic("initTCP error:" + err.Error())
 		return
 	}
 

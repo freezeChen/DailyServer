@@ -9,7 +9,6 @@ package server
 import (
 	"context"
 	"dailyserver/im/model"
-	"dailyserver/im/service"
 	"dailyserver/proto"
 	"errors"
 	"fmt"
@@ -22,22 +21,21 @@ const (
 )
 
 type Server struct {
-	Round *model.Round
-
-	svc   *service.Service
-	logic proto.LogicService
+	Round  *model.Round
+	Bucket *model.Bucket
+	logic  proto.LogicService
 }
 
-func New(svc *service.Service, logic proto.LogicService) *Server {
+func New(logic proto.LogicService) *Server {
 	return &Server{
-		Round: model.NewRound(),
-		svc:   svc,
-		logic: logic,
+		Round:  model.NewRound(),
+		Bucket: model.NewBucket(),
+		logic:  logic,
 	}
 }
 
+//验证账号
 func (server *Server) AuthTCP(ctx context.Context, msg *proto.Proto, ch *model.Channel) (id int64, err error) {
-
 	if err := msg.ReadTCP(&ch.Reader); err != nil {
 		return 0, err
 	}

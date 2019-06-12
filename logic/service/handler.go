@@ -10,10 +10,12 @@ import (
 	"context"
 	"dailyserver/lib/zerrors"
 	"dailyserver/proto"
+	"github.com/freezeChen/studio-library/zlog"
 )
 
 func (s *Service) Auth(ctx context.Context, req *proto.AuthReq, reply *proto.EmptyReply) error {
 
+	zlog.Error("auth")
 	user := s.dao.GetUser(req.Id)
 
 	if user == nil {

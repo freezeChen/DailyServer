@@ -16,7 +16,7 @@ message Proto {
 }
 
 message PushMsgReq {
-	int32 Key = 1;
+	int64 Key = 1;
 	Proto proto = 2;
 }
 

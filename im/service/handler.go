@@ -8,12 +8,16 @@ package service
 
 import (
 	"context"
+	"dailyserver/lib/zerrors"
 	"dailyserver/proto"
-	"fmt"
 )
 
-func (s *Service) Hello(ctx context.Context, req *proto.Req, reply *proto.Reply) error {
+func (s *Service) PushMsg(ctx context.Context, req *proto.PushMsgReq, reply *proto.PushMsgReply) error {
+	ch := s.srv.Bucket.Get(req.Key)
+	if ch == nil {
+		return zerrors.NewMsg("用户不在线")
+	}
 
-	reply.Message = fmt.Sprintf("hello %s, Congratulations you success call rpc service!", req.S)
+	ch.Push(req.Proto)
 	return nil
 }

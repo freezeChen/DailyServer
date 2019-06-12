@@ -103,6 +103,7 @@ func (server *Server) serverTCP(c *conf.Config, conn *net.TCPConn, r int) {
 
 	if msg, err = ch.Ring.Set(); err == nil {
 		if ch.Id, err = server.AuthTCP(ctx, msg, ch); err == nil {
+			server.Bucket.Online(ch.Id, ch)
 			zlog.Debugf("tcp connect id:%d proto: %+v", ch.Id, msg)
 		}
 
