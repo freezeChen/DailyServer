@@ -13,7 +13,7 @@ func (d *Dao) Login(account, password string) *model.User {
 	user.Account = account
 	user.Password = password
 
-	has, err := d.Db.Get(&user)
+	has, err := d.db.Get(&user)
 	if err != nil {
 		return nil
 	}
@@ -25,7 +25,7 @@ func (d *Dao) Login(account, password string) *model.User {
 
 func (d *Dao) GetUser(id int64) *model.User {
 	var user model.User
-	has, err := d.Db.ID(id).Get(&user)
+	has, err := d.db.ID(id).Get(&user)
 	if err != nil {
 		return nil
 	}

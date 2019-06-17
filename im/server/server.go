@@ -69,6 +69,7 @@ func (server *Server) Operate(ctx context.Context, msg *proto.Proto, ch *model.C
 
 	switch msg.Opr {
 	case proto.OpSendMsg:
+		_, err = server.logic.Operate(ctx, &proto.OperateReq{Proto: msg})
 		//server
 	}
 

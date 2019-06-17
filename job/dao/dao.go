@@ -1,23 +1,22 @@
 /*
-   @Time : 2019-05-31 11:39:47
-   @Author :
+   @Time : 2019-06-17 16:46:43
+   @Author : 
    @File : dao
-   @Software: im
+   @Software: job
 */
 package dao
 
 import (
-	"dailyserver/im/conf"
 	"github.com/freezeChen/studio-library/database/mysql"
 	"github.com/freezeChen/studio-library/redis"
-	_ "github.com/go-sql-driver/mysql"
 	"github.com/go-xorm/xorm"
+	_ "github.com/go-sql-driver/mysql"
+	"dailyserver/job/conf"
 )
 
 type Dao struct {
 	Db    xorm.EngineInterface
 	Redis *redis.Redis
-
 }
 
 func New(c *conf.Config) (dao *Dao) {

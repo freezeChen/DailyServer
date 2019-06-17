@@ -12,6 +12,8 @@ import (
 	"dailyserver/proto"
 	"github.com/freezeChen/studio-library/zlog"
 	"github.com/micro/go-micro"
+	"github.com/micro/go-micro/broker"
+	"github.com/micro/go-plugins/broker/kafka"
 	"time"
 )
 
@@ -28,6 +30,17 @@ func main() {
 		micro.RegisterInterval(20*time.Second))
 
 	svc.Init()
+
+	micro.Broker(kafka.NewBroker(func(options *broker.Options) {
+		options.Addrs = []string{"47.106.137.3:9092"}
+	}))
+
+	if err := broker.Connect(); err != nil {
+		panic(err)
+		return
+	}
+
+
 	s := service.New(cfg)
 	err = proto.RegisterLogicHandler(svc.Server(), s)
 	if err := svc.Run(); err != nil {

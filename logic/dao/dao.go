@@ -15,15 +15,16 @@ import (
 )
 
 type Dao struct {
-	Db    xorm.EngineInterface
+	db    xorm.EngineInterface
 	Redis *redis.Redis
+	Kafka *kafka
 }
 
 func New(c *conf.Config) (dao *Dao) {
 	dao = &Dao{
-		Db:    mysql.New(c.Mysql),
+		db:    mysql.New(c.Mysql),
 		Redis: redis.New(c.Redis),
+		Kafka: new(kafka),
 	}
 	return
 }
-

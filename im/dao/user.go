@@ -7,6 +7,6 @@
 package dao
 
 func (dao *Dao) GetUser(id int64) {
-	//has, err := dao.Db.SQL(`select * from user;`).Get("")
+	//has, err := dao.db.SQL(`select * from user;`).Get("")
 
 }

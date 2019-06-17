@@ -1,26 +1,24 @@
 /*
-   @Time : 2019-06-10 13:42:13
-   @Author :
+   @Time : 2019-06-17 16:46:43
+   @Author : 
    @File : service
-   @Software: logic
+   @Software: job
 */
 package service
 
 import (
-	"dailyserver/logic/conf"
-	"dailyserver/logic/dao"
+	"dailyserver/job/conf"
+	"dailyserver/job/dao"
 )
 
 type Service struct {
 	dao *dao.Dao
 }
 
-
-
 func New(c *conf.Config) (s *Service) {
 	s = &Service{
 		dao: dao.New(c),
 	}
-
 	return s
 }
+

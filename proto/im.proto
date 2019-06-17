@@ -11,7 +11,7 @@ message Proto {
 	int32 ver = 1;
 	int32 opr = 2;
 	int64 id = 3;
-	int32 toid = 4;
+	int64 toId = 4;
 	bytes body = 5;
 }
 

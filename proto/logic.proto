@@ -1,10 +1,16 @@
 syntax = "proto3";
 
 package proto;
+
 import "base.proto";
+import "im.proto";
+
 
 service Logic {
 	rpc Auth (AuthReq) returns (EmptyReply) {
+	}
+
+	rpc Operate (OperateReq) returns (EmptyReply) {
 	}
 }
 
@@ -17,4 +23,8 @@ message AuthReq {
 
 message AuthReply {
 
+}
+
+message OperateReq {
+	Proto proto = 1;
 }
